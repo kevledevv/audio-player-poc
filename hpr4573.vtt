@@ -1,0 +1,641 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:13.200
+This is Hacker Public Radio Episode 4573, for 2026-02-11
+
+00:00:13.200 --> 00:00:16.400
+Today's show is entitled, "Nuclear Reactor Technology - Ep 6 Thorium Reactors"
+
+00:00:16.400 --> 00:00:20.040
+The host is Whiskeyjack and the duration is 00:16:57
+
+00:00:20.040 --> 00:00:22.080
+The flag is Clean, and the license is CC-BY-SA
+
+00:00:22.080 --> 00:00:27.320
+The summary is "The use of thorium in nuclear power, what thorium is, what sort of reactors can use it."
+
+00:00:40.000 --> 00:00:46.280
+This episode is the sixth in an eight-part series of nuclear reactor technology.
+
+00:00:46.280 --> 00:00:50.880
+In this episode, we will describe the use of thorium and nuclear power, including what thorium
+
+00:00:50.880 --> 00:00:56.760
+is, how it differs from uranium, and what sort of reactors can use it.
+
+00:00:56.760 --> 00:00:58.440
+What is thorium?
+
+00:00:58.440 --> 00:01:02.880
+Thorium is a slightly radioactive metal, which can be used for nuclear fuel, and which
+
+00:01:02.880 --> 00:01:06.280
+is roughly three times as abundant as uranium.
+
+00:01:06.280 --> 00:01:13.400
+Really all naturally occurring thorium is a single isotope, TH-232.
+
+00:01:13.400 --> 00:01:21.600
+Other isotopes such as TH-228, TH-230, and TH-234 exist only in trace amounts, and so
+
+00:01:21.600 --> 00:01:24.320
+can be ignored for our purposes.
+
+00:01:24.320 --> 00:01:28.640
+Thorium oxide has long been used in applications such as gas, metals, and high-temperature
+
+00:01:28.640 --> 00:01:35.000
+ceramics, but has seen little use in nuclear power beyond some experimental reactors.
+
+00:01:35.000 --> 00:01:40.920
+While thorium differs from uranium, while thorium can be used in nuclear fuel, thorium 232
+
+00:01:40.920 --> 00:01:43.840
+is fertile rather than fizzile.
+
+00:01:43.840 --> 00:01:48.040
+That means that pure thorium is not itself directly capable of sustaining a nuclear
+
+00:01:48.040 --> 00:01:49.040
+reaction.
+
+00:01:49.040 --> 00:01:54.760
+Instead, it must be turned into a fizzile isotope by bombarding it with neutrons.
+
+00:01:54.760 --> 00:02:00.440
+In this respect, it is similar to uranium 238, which is the main isotope of uranium, which
+
+00:02:00.440 --> 00:02:04.320
+can be turned into fizzile and non-fizzile plutonium.
+
+00:02:04.320 --> 00:02:10.200
+In the case of thorium 232, it can be turned into uranium 233, which is a fizzile isotope
+
+00:02:10.200 --> 00:02:12.680
+much like uranium 235.
+
+00:02:12.680 --> 00:02:18.840
+However, unlike uranium 235, uranium 233 is not considered to be useful from making
+
+00:02:18.840 --> 00:02:21.240
+nuclear weapons.
+
+00:02:21.240 --> 00:02:26.520
+Sources of thorium Currently, the largest non-reserves of thorium are in India, followed
+
+00:02:26.520 --> 00:02:28.520
+by Brazil and Australia.
+
+00:02:28.520 --> 00:02:32.640
+However, since there is currently a very limited market for thorium, there has not been
+
+00:02:32.640 --> 00:02:38.520
+a lot of exploration done, and it is possible that very large reserves exist elsewhere.
+
+00:02:38.520 --> 00:02:42.600
+As a result of this, take attempts to list thorium reserves by country with a very large
+
+00:02:42.600 --> 00:02:48.040
+grain of salt, except for a few very large cases.
+
+00:02:48.040 --> 00:02:53.200
+India's large reserves of thorium, however, explains their interest in using it as fuel.
+
+00:02:53.200 --> 00:02:57.840
+China also have an interest in thorium, such that it is often produced as a byproduct of
+
+00:02:57.840 --> 00:03:00.640
+rare earthbinding and refining.
+
+00:03:00.640 --> 00:03:04.440
+As a result of this, there are large reserves of thorium already mine there, which could
+
+00:03:04.440 --> 00:03:06.960
+be used as fuel.
+
+00:03:06.960 --> 00:03:09.880
+Why there is interest in using thorium as a fuel?
+
+00:03:09.880 --> 00:03:14.440
+There are several reasons why people are interested in using thorium as a nuclear fuel.
+
+00:03:14.440 --> 00:03:19.800
+Abundance of thorium Thorium is roughly three times as abundant as uranium in the earth's
+
+00:03:19.800 --> 00:03:20.800
+crust.
+
+00:03:20.800 --> 00:03:25.360
+This is based on statistical sampling of rocks, not in terms of finding commercial order
+
+00:03:25.360 --> 00:03:26.360
+deposits.
+
+00:03:26.440 --> 00:03:31.000
+However, the world is not currently short of uranium, so the relative abundance of
+
+00:03:31.000 --> 00:03:35.400
+thorium is not a significant advantage at this time.
+
+00:03:35.400 --> 00:03:37.760
+Some countries have a lot of it.
+
+00:03:37.760 --> 00:03:42.440
+Some countries in India in particular have far more thorium than they do uranium.
+
+00:03:42.440 --> 00:03:47.240
+As a result of this, they see thorium as a strategic and security advantage in giving them
+
+00:03:47.240 --> 00:03:51.440
+a sovereign independent supply of energy.
+
+00:03:51.440 --> 00:03:56.040
+Thorium breeder reactors are simpler than uranium breeder reactors.
+
+00:03:56.280 --> 00:04:04.600
+Thorium 232 to uranium 233, the a neutron bombardment, is analogous to converting uranium 238
+
+00:04:04.600 --> 00:04:10.680
+to various plutonium isotopes in terms of turning fertile isotopes into fizzile ones.
+
+00:04:10.680 --> 00:04:15.080
+Listen again to the previous episode on fast neutron reactors if you need to refresh
+
+00:04:15.080 --> 00:04:20.360
+your on those, but fast neutron breeder reactors are more expensive and difficult to design
+
+00:04:20.360 --> 00:04:24.080
+and operate than thorium reactors.
+
+00:04:24.160 --> 00:04:28.280
+Thorium can be used in reactors similar to certain types which have been in large-scale
+
+00:04:28.280 --> 00:04:33.280
+commercial use for decades, and so are less complex and expensive than, for example, a
+
+00:04:33.280 --> 00:04:36.320
+liquid sodium-fast neutron reactor.
+
+00:04:36.320 --> 00:04:41.320
+No new technologies required to use thorium in commercial power reactors.
+
+00:04:41.320 --> 00:04:44.400
+Supposed lower nuclear weapons potential.
+
+00:04:44.400 --> 00:04:48.200
+Some people are of the view that there is less potential for creating nuclear weapons if
+
+00:04:48.200 --> 00:04:51.800
+thorium is used as fuel than is the case for uranium.
+
+00:04:51.840 --> 00:04:54.840
+However, I am not convinced of this as an argument.
+
+00:04:54.840 --> 00:05:01.360
+Commercial uranium cycle power reactors are not suitable for creating weapons-grade plutonium.
+
+00:05:01.360 --> 00:05:06.160
+Plutonium or enriched uranium are required for thorium cycle reactors.
+
+00:05:06.160 --> 00:05:10.920
+A country which has a large number of thorium cycle reactors will need either uranium
+
+00:05:10.920 --> 00:05:17.400
+enrichment or plutonium processing facilities while natural uranium reactors require neither.
+
+00:05:17.440 --> 00:05:22.880
+On this basis, the least problematic fuel would appear to be natural uranium.
+
+00:05:22.880 --> 00:05:25.000
+What is thorium breeding?
+
+00:05:25.000 --> 00:05:29.880
+As mentioned previously, thorium by itself cannot be used as a nuclear fuel.
+
+00:05:29.880 --> 00:05:35.400
+By using plutonium or enriched uranium as driver elements, however, thorium can be converted
+
+00:05:35.400 --> 00:05:41.240
+to fizzile uranium 233 which can be used to sustain a reaction.
+
+00:05:41.240 --> 00:05:45.240
+There are different configurations for the fuel elements which I won't go into here as
+
+00:05:45.320 --> 00:05:47.480
+this would require too much detail.
+
+00:05:47.480 --> 00:05:53.560
+Essentially, though, a mix of thorium 232 and either plutonium or enriched uranium 235
+
+00:05:53.560 --> 00:05:56.120
+would be loaded into the reactor.
+
+00:05:56.120 --> 00:06:00.600
+The reaction would be started off by the plutonium or uranium 235.
+
+00:06:00.600 --> 00:06:07.400
+Bombardment of the thorium 232 by neutrons would gradually convert it to uranium 233.
+
+00:06:07.400 --> 00:06:12.840
+As uranium 233 accumulated, it would also efficient and contribute to the power output,
+
+00:06:12.840 --> 00:06:16.840
+making up for the using up of the plutonium and uranium 235.
+
+00:06:16.840 --> 00:06:21.320
+By the end of the life of the fuel, all or nearly all of the energy would be coming from the
+
+00:06:21.320 --> 00:06:24.280
+created uranium 233.
+
+00:06:24.280 --> 00:06:29.240
+The fuel is then removed from the reactor and reprocess to recover the remaining uranium 233.
+
+00:06:30.040 --> 00:06:34.680
+This uranium 233 may then be used as a driver fuel for a fresh fuel load.
+
+00:06:35.560 --> 00:06:39.880
+For reactors that are refueled continuously while online, that is while operating,
+
+00:06:40.520 --> 00:06:45.880
+fresh fuel is continuously fed in and used fuel extracted rather than being distinct
+
+00:06:45.880 --> 00:06:48.040
+loading and unloading phases of operation.
+
+00:06:49.240 --> 00:06:50.520
+Breeding ratio.
+
+00:06:50.520 --> 00:06:56.360
+The amount of uranium 233 created in this process will depend upon the reactor and fuel design.
+
+00:06:57.080 --> 00:07:02.840
+This may vary from not much uranium 233 generated all the way up to theoretically at least,
+
+00:07:03.400 --> 00:07:08.760
+more uranium 233 being extracted from the spent fuel than the amount of driver fuel used to
+
+00:07:08.760 --> 00:07:09.640
+start the reaction.
+
+00:07:10.520 --> 00:07:13.160
+That is, the breeding ratio would be greater than one.
+
+00:07:13.880 --> 00:07:19.320
+However, this has not been demonstrated and most fuel cycles assume that a continual source of
+
+00:07:19.320 --> 00:07:24.120
+driver fuel will be required, generally from some sort of uranium cycle reactors.
+
+00:07:25.320 --> 00:07:27.560
+What sorts of reactors can use thorium?
+
+00:07:28.120 --> 00:07:34.120
+Most of the types of nuclear reactors we have discussed so far in the series can use thorium fuel to some extent.
+
+00:07:34.760 --> 00:07:37.240
+However, some are more suitable for it than others.
+
+00:07:38.760 --> 00:07:42.680
+pH WRs, that is heavy water reactors, including can do.
+
+00:07:43.480 --> 00:07:48.520
+Large-scale commercial pressurized heavy water reactors have been used for decades around the world.
+
+00:07:49.240 --> 00:07:53.880
+These have run on natural uranium but are also well suited to using thorium fuel due to their
+
+00:07:53.880 --> 00:07:55.240
+efficient use of neutrons.
+
+00:07:55.960 --> 00:08:00.840
+India is one of the countries using this type of reactor and they have done a great deal of R&D
+
+00:08:00.840 --> 00:08:02.200
+on using them with thorium.
+
+00:08:03.000 --> 00:08:08.040
+A typical thorium fuel for them would consist of 5% reactor-grade plutonium,
+
+00:08:08.040 --> 00:08:13.880
+plus thorium, about 80% of the energy generated would come from the thorium portion of the fuel.
+
+00:08:14.520 --> 00:08:17.880
+An alternative to plutonium would be low enriched uranium.
+
+00:08:18.680 --> 00:08:22.520
+None of the commercial reactors of this type are currently running on thorium,
+
+00:08:22.520 --> 00:08:26.120
+but this is an area of ongoing research, particularly in India.
+
+00:08:27.400 --> 00:08:33.400
+HTR, high temperature gas-cooled reactors, as mentioned in a previous episode,
+
+00:08:33.400 --> 00:08:37.160
+some of the experimental gas-cooled reactors have used thorium fuel.
+
+00:08:37.800 --> 00:08:45.080
+Examples of these are the AVR and THTR 300 reactors in Germany in the 1960s to the 1980s.
+
+00:08:45.800 --> 00:08:50.600
+These were pebble bed reactors in which the fuel was in the form of spheres of fuel,
+
+00:08:51.480 --> 00:08:58.200
+enriched uranium and thorium, plus a graphite moderator, and formed into billiard ball size spheres.
+
+00:08:59.560 --> 00:09:02.040
+The reactors were cooled by helium gas.
+
+00:09:02.680 --> 00:09:07.960
+Pebble bed reactor technology is being revived for the small modular reactor market,
+
+00:09:07.960 --> 00:09:10.200
+but these doer ones don't involve thorium.
+
+00:09:11.320 --> 00:09:16.360
+Moulton salt reactors. Moulton salt reactors use molten salt as a coolant.
+
+00:09:17.000 --> 00:09:22.760
+When used with dissolved thorium fuel, the salt would be a fluoride salt in order to be chemically
+
+00:09:22.760 --> 00:09:28.680
+compatible with thorium. To be used in a thorium fuel cycle, they would normally have a graphite
+
+00:09:28.680 --> 00:09:34.040
+moderator. From the perspective of thorium, there are two variants of molten salt reactor
+
+00:09:34.040 --> 00:09:39.800
+that are of interest. One type contains a fuel inside separate fuel pins, like in most other
+
+00:09:39.800 --> 00:09:44.360
+reactor types. The other dissolves a fuel in the molten salt coolant.
+
+00:09:45.640 --> 00:09:49.800
+In the latter case, there would be a chemical processing loop that extracts unwanted
+
+00:09:49.800 --> 00:09:54.840
+fission products that is elements that were created in the reaction that we don't want present,
+
+00:09:55.480 --> 00:10:02.360
+and uranium 233 from the salt on a continuous basis. Moulton salt reactors were discussed in
+
+00:10:02.360 --> 00:10:08.680
+another episode as they can use many types of fuel besides thorium. Not all developers of molten
+
+00:10:08.680 --> 00:10:13.800
+salt reactors are convinced they are well suited to using thorium. With the head of one company
+
+00:10:13.800 --> 00:10:18.440
+citing the difficult chemistry problems that thorium presents, and the effects this has on the
+
+00:10:18.440 --> 00:10:25.080
+types of molten salt used as compared to uranium. Lightwater reactors. Lightwater reactors,
+
+00:10:25.080 --> 00:10:30.600
+both the common pressurized water and boiling water reactor types, could use thorium fuel,
+
+00:10:30.600 --> 00:10:35.640
+but are not well suited to it. They would not achieve very good breeding ratios in terms of
+
+00:10:35.640 --> 00:10:42.360
+converting thorium 232 to uranium 233. A major drawback of these reactors is their lower
+
+00:10:42.360 --> 00:10:48.440
+neutron economy due to the use of a less effective moderator. However, there is some attraction
+
+00:10:48.440 --> 00:10:52.840
+in terms of using them to get rid of surplus plutonium if that is what is desired.
+
+00:10:53.800 --> 00:11:00.040
+One of the features of thorium mixed oxide fuel is that unlike uranium-based mixed oxide fuels,
+
+00:11:00.040 --> 00:11:04.600
+it can burn plutonium without creating more plutonium for uranium 238.
+
+00:11:05.480 --> 00:11:09.000
+I'm not sure what the attraction of this is, although there are apparently
+
+00:11:09.000 --> 00:11:15.800
+is at least some minor interest in this from some quarters. Fast neutron reactors, thorium
+
+00:11:15.800 --> 00:11:21.960
+could be used in place if uranium 238 in fast neutron reactors. However, there is no real reason
+
+00:11:21.960 --> 00:11:27.800
+to do this when surplus uranium 238 is available, and the latter provides a better breeding ratio
+
+00:11:27.800 --> 00:11:33.560
+that is, produces more physon material from a given amount of fuel. The challenge is facing
+
+00:11:33.560 --> 00:11:38.280
+thorium fuel reactors. The main challenge facing the use of thorium is that it does not
+
+00:11:38.280 --> 00:11:44.440
+offer a lot of practical advantages over uranium. Like fast neutron reactors, using thorium
+
+00:11:44.440 --> 00:11:50.280
+was seen as a solution to a perceived future shortage of uranium. However, that shortage didn't
+
+00:11:50.280 --> 00:11:56.920
+materialize instead large new reserves of uranium were found. The cost of uranium is only a small
+
+00:11:56.920 --> 00:12:01.880
+part of the total cost of electric power from nuclear power plant, so uranium prices could
+
+00:12:01.880 --> 00:12:07.560
+rise significantly without affecting overall cost much. With enough of a rise in prices,
+
+00:12:07.560 --> 00:12:12.680
+uranium could be economically extracted from sea water, opening up a very large potential
+
+00:12:12.680 --> 00:12:18.760
+resource as there are very large amounts of it dissolved in the sea. Uranium fuel is already
+
+00:12:18.760 --> 00:12:24.360
+tested, qualified, and available in quantity on the commercial market. Thorium is not,
+
+00:12:24.360 --> 00:12:29.880
+and overcoming that will require a large investment. Thorium is more expensive the process of
+
+00:12:29.880 --> 00:12:35.000
+defuel due to its chemical nature and the exceptionally high melting point of its oxide.
+
+00:12:35.880 --> 00:12:41.560
+A practical thorium fuel cycle requires reprocessing of spent fuel, something that is not required
+
+00:12:41.560 --> 00:12:47.080
+for a once-through fuel cycle with uranium, and is done with uranium in only a few countries today.
+
+00:12:48.120 --> 00:12:55.000
+This reprocessing is another additional cost. The uranium 233 and leftover thorium in spent fuel
+
+00:12:55.080 --> 00:13:02.040
+contain highly radioactive isotopes such as uranium 232 and thorium 228, which make reprocessing
+
+00:13:02.040 --> 00:13:07.160
+difficult and expensive. This is not to say that thorium does not have some potential in the
+
+00:13:07.160 --> 00:13:12.440
+long run. Rather, it means that the advantages of thorium are offset by problems which come along
+
+00:13:12.440 --> 00:13:18.280
+with it. Overall, the balance of present in most countries favors using uranium in a once-through
+
+00:13:18.360 --> 00:13:25.800
+fuel cycle. Thorium in India, an example use case, India is probably the prime example of a
+
+00:13:25.800 --> 00:13:31.240
+country that has had a long-term interest in thorium-based nuclear power. This is an area they
+
+00:13:31.240 --> 00:13:36.840
+have been researching and developing for decades. The main reactor types using India are also
+
+00:13:36.840 --> 00:13:42.680
+well suited to being adopted to thorium fuel. These are pressurized heavy water reactors
+
+00:13:42.760 --> 00:13:48.360
+originally derived from Canadian designs. Indian scientists and engineers continue to develop
+
+00:13:48.360 --> 00:13:53.800
+these reactor designs into once which maintain the original principles, but are currently independent
+
+00:13:53.800 --> 00:13:59.400
+Indian designs. Because of this reactor types of very efficient use of neutrons, it is well suited
+
+00:13:59.400 --> 00:14:06.120
+to using thorium fuel. Why is India pursuing using thorium? The reason that India are pursuing
+
+00:14:06.120 --> 00:14:11.640
+using thorium is that they have abundant supplies of thorium, but very limited supplies of uranium.
+
+00:14:12.360 --> 00:14:18.200
+While Canada uses a similar type of reactor, it has abundant supplies of uranium and so has
+
+00:14:18.200 --> 00:14:24.280
+had much less incentive to put much effort into thorium fuel. How would a thorium fuel cycle work in
+
+00:14:24.280 --> 00:14:31.160
+India? The basic fuel cycle would work as follows. Uranium cycle fast-breeder reactors would produce
+
+00:14:31.160 --> 00:14:36.840
+plutonium from uranium and uranium 233 from a blanket of thorium around the uranium core.
+
+00:14:37.720 --> 00:14:43.800
+The plutonium in uranium 233 would be incorporated into mixed oxide fuel as plutonium
+
+00:14:43.800 --> 00:14:51.400
+thorium and uranium 233 thorium fuel. This mocks fuel would be used in pressurized heavy water
+
+00:14:51.400 --> 00:14:57.480
+reactors. Each fast-breeder reactor could supply fuel for multiple pressurized heavy water reactors.
+
+00:14:58.200 --> 00:15:02.760
+The spent fuel in additional blanket material from the pressurized heavy water reactors
+
+00:15:02.760 --> 00:15:10.520
+would be reprocessed to extract the leftover uranium 233. This recovered uranium 233 would then
+
+00:15:10.520 --> 00:15:15.800
+be fed back into the fuel cycle to make more fuel with top-ups from fast-breeder reactors added
+
+00:15:15.800 --> 00:15:21.560
+as required. This fuel cycle would allow India to use its thorium reserves with a relatively
+
+00:15:21.560 --> 00:15:28.520
+small amount of uranium input. Current status India are working on the fast-breeder reactors
+
+00:15:28.520 --> 00:15:32.840
+which would be used to provide the seed material for thorium fuel in their pressurized heavy water
+
+00:15:32.840 --> 00:15:38.840
+reactors. India continue to pursue using thorium but they need to build up the rest of the fuel
+
+00:15:38.840 --> 00:15:42.840
+cycle which enables it before they can switch to thorium on a large scale.
+
+00:15:43.960 --> 00:15:49.000
+Reportedly they already use some thorium fuel in some of the fuel channels of their heavy water
+
+00:15:49.000 --> 00:15:54.280
+reactors in order to smooth out the power profile but details of this are hard to come by.
+
+00:15:55.240 --> 00:16:00.600
+India are expected to undergo rapid economic growth, industrial development,
+
+00:16:00.600 --> 00:16:04.920
+and population movement into very large urban centers over the course of this century.
+
+00:16:05.800 --> 00:16:10.920
+Meanwhile coal resources are becoming depleted as well as being a source of serious air pollution.
+
+00:16:11.480 --> 00:16:17.080
+India hopes to use thorium to provide a secure domestic energy resource which can replace coal
+
+00:16:17.080 --> 00:16:23.240
+and power their future development. Conclusion thorium is an abundant material that is seen as an
+
+00:16:23.240 --> 00:16:29.000
+alternative to uranium and nuclear power. Experimental thorium power reactors take back to at least
+
+00:16:29.000 --> 00:16:36.600
+the 1960s. No new reactor technology is required to use thorium. Existing well proven reactor
+
+00:16:36.600 --> 00:16:42.200
+designs which have been in use for decades can use thorium as fuel. The common light water
+
+00:16:42.200 --> 00:16:47.000
+reactor designs that are popular in some countries however are not well suited to using thorium.
+
+00:16:47.720 --> 00:16:52.280
+Initial interest in thorium was mainly driven by a perception that uranium would be in short
+
+00:16:52.280 --> 00:16:57.720
+supply in future and slow neutron thorium reactors were cheaper and simpler than fast neutron
+
+00:16:57.720 --> 00:17:04.200
+uranium reactors. However huge new high-grade supplies uranium were founded in a number of countries
+
+00:17:04.200 --> 00:17:09.480
+causing uranium prices to fall and reducing interest in finding alternatives. While some
+
+00:17:09.480 --> 00:17:14.680
+R&D continues on thorium fuel in a number of countries, the mainstream of development continues to
+
+00:17:14.680 --> 00:17:20.120
+be on uranium-based fuel. Some countries with abundant thorium reserves so maintain a major
+
+00:17:20.200 --> 00:17:27.880
+interest in thorium with India being the prime example. In the next episode, we will describe
+
+00:17:27.880 --> 00:17:35.080
+small modular reactors. This concludes the sixth episode of an eight-part series on nuclear
+
+00:17:35.080 --> 00:17:36.280
+reactor technology.
+
+00:17:37.000 --> 00:17:44.720
+You have been listening to Hacker Public Radio at Hacker Public Radio.org.
+
+00:17:44.720 --> 00:17:48.520
+Today's show was contributed by a HPR listener like yourself.
+
+00:17:48.520 --> 00:17:55.000
+If you ever thought of recording podcast, click on our upload link
+
+00:17:55.000 --> 00:17:56.000
+to find out how easy it is.
+
+00:17:56.000 --> 00:18:03.480
+Hosting for HPR has been kindly provided by an AnHonestHost.com, the Internet Archive,
+
+00:18:03.480 --> 00:18:04.480
+rsync.net, and our mirror network.
+
+00:18:04.480 --> 00:18:10.480
+Unless otherwise stated, today's show is released under a Creative Commons
+
+00:18:10.480 --> 00:18:13.480
+Attribution-ShareAlike 4.0 International (CC BY-SA 4.0) license.
+

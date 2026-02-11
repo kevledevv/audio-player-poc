@@ -1,210 +1,122 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<title>Vue 2 Audio Player GitHub</title>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 	<style>
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 20px;
-			background: #f5f5f5
-		}
-
-		.audio-player {
-			width: 100%;
-			max-width: 800px;
-			margin: auto;
-			background: white;
-			padding: 20px;
-			border-radius: 8px;
-			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08)
-		}
-
-		.controls {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 10px;
-			margin: 15px 0
-		}
-
-		button {
-			padding: 8px 12px;
-			cursor: pointer;
-			border: 1px solid #ddd;
-			background: #fafafa;
-			border-radius: 4px
-		}
-
-		button:hover {
-			background: #eee
-		}
-
-		.status {
-			min-height: 20px;
-			margin-bottom: 10px
-		}
-
-		.error {
-			color: red
-		}
-
-		.transcript {
-			max-height: 200px;
-			overflow-y: auto;
-			border: 1px solid #ddd;
-			padding: 10px;
-			font-size: 14px;
-			border-radius: 4px;
-			background: #fafafa
-		}
-
-		.transcript .active {
-			background: #e0e0e0
-		}
+		body { font-family: Arial, sans-serif; margin:0; padding:20px; background:#f5f5f5 }
+		.audio-player { width:100%; max-width:800px; margin:auto; background:white; padding:20px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.08) }
+		.player-container { display:flex; gap:20px }
+		.main { flex:1 }
+		.controls { display:flex; flex-wrap:wrap; gap:10px; margin:15px 0 }
+		button { padding:8px 12px; cursor:pointer; border:1px solid #ddd; background:#fafafa; border-radius:4px }
+		button:hover { background:#eee }
+		.status { min-height:20px; margin-bottom:10px }
+		.error { color:red }
+		.transcript { max-height:200px; overflow-y:auto; border:1px solid #ddd; padding:10px; font-size:14px; border-radius:4px; background:#fafafa }
+		.transcript .active { background:#e0e0e0 }
+		.playlist { width:250px; border-left:1px solid #ddd; padding-left:10px }
+		.playlist-item { padding:8px; cursor:pointer; border-radius:4px }
+		.playlist-item:hover { background:#f0f0f0 }
+		.playlist-item.active { font-weight:bold; background:#eaeaea }
+		@media (max-width:768px) { .player-container { flex-direction:column } .playlist { width:100%; border-left:none; border-top:1px solid #ddd; padding-top:10px } }
 	</style>
 </head>
-
 <body>
 
-	<div id="app">
-		<div class="audio-player">
-			<audio ref="audio" :src="audioUrl" controls crossorigin="anonymous" @timeupdate="updateTime"
-				@loadedmetadata="onLoaded" @error="onError">
-				<track kind="subtitles" srclang="fr" label="FR" :src="vttUrl" default>
-			</audio>
+<div id="app">
+	<div class="audio-player">
+		<div class="player-container">
+			<div class="main">
+				<audio ref="audio" :src="currentAudioUrl" controls crossorigin="anonymous"
+							 @timeupdate="updateTime"
+							 @loadedmetadata="onLoaded"
+							 @error="onError">
+					<track kind="subtitles" srclang="fr" label="FR" :src="currentVttUrl" default>
+				</audio>
 
-			<div class="controls">
-				<button @click="rewind">-15s</button>
-				<button @click="togglePlay">{{ isPlaying ? 'Pause' : 'Lecture' }}</button>
-				<button @click="forward">+15s</button>
-				<button @click="toggleTranscript">{{ showTranscript ? 'Masquer transcription' : 'Afficher transcription'
-					}}</button>
+				<div class="controls">
+					<button @click="rewind">-15s</button>
+					<button @click="togglePlay">{{ isPlaying ? 'Pause' : 'Lecture' }}</button>
+					<button @click="forward">+15s</button>
+					<button @click="toggleTranscript">{{ showTranscript ? 'Masquer transcription' : 'Afficher transcription' }}</button>
+					<button @click="toggleMode">Mode: {{ mode }}</button>
+				</div>
+
+				<div class="status">
+					<div v-if="error" class="error">{{ error }}</div>
+				</div>
+
+				<div v-if="showTranscript" class="transcript">
+					<div v-for="(cue,index) in cues" :key="index" :class="{ active: currentTime >= cue.start && currentTime <= cue.end }">
+						{{ cue.text }}
+					</div>
+				</div>
 			</div>
 
-			<div class="status">
-				<div v-if="error" class="error">{{ error }}</div>
-			</div>
-
-			<div v-if="showTranscript" class="transcript">
-				<div v-for="(cue,index) in cues" :key="index"
-					:class="{ active: currentTime >= cue.start && currentTime <= cue.end }">
-					{{ cue.text }}
+			<div v-if="isPlaylistMode" class="playlist">
+				<div v-for="(item,index) in playlist" :key="index" :class="['playlist-item',{ active: index === currentIndex }]" @click="selectTrack(index)">
+					{{ item.title }}
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<script>
-		new Vue({
-			el: '#app',
-			data() {
-				return {
-					audioUrl: 'SoundHelix-Song-1.mp3',
-					vttUrl: 'example.vtt',
-					isPlaying: false,
-					showTranscript: false,
-					cues: [],
-					currentTime: 0,
-					error: null
-				}
-			},
-			mounted() {
-				this.loadCues()
-			},
-			methods: {
-				togglePlay() {
-					const audio = this.$refs.audio
-
-					if (!audio) {
-						return
-					}
-					else {
-						if (this.isPlaying) {
-							audio.pause()
-						}
-						else {
-							audio.play().catch(() => {
-								this.error = 'Lecture bloquée par le navigateur'
-							})
-						}
-
-						this.isPlaying = !this.isPlaying
-					}
-				},
-				rewind() {
-					const audio = this.$refs.audio
-
-					if (audio) {
-						audio.currentTime = Math.max(0, audio.currentTime - 15)
-					}
-					else {
-						return
-					}
-				},
-				forward() {
-					const audio = this.$refs.audio
-
-					if (audio) {
-						audio.currentTime = audio.currentTime + 15
-					}
-					else {
-						return
-					}
-				},
-				updateTime() {
-					const audio = this.$refs.audio
-
-					if (audio) {
-						this.currentTime = audio.currentTime
-					}
-					else {
-						return
-					}
-				},
-				onLoaded() {
-					this.error = null
-				},
-				onError() {
-					this.error = 'Erreur de lecture (réseau ou format invalide)'
-				},
-				toggleTranscript() {
-					this.showTranscript = !this.showTranscript
-				},
-				loadCues() {
-					const audio = this.$refs.audio
-
-					if (!audio) {
-						return
-					}
-					else {
-						const tracks = audio.textTracks
-
-						if (!tracks || !tracks.length) {
-							return
-						} else {
-							const track = tracks[0]
-							track.mode = 'hidden'
-
-							const tryLoad = () => {
-								if (track.cues && track.cues.length) {
-									this.cues = Array.from(track.cues).map(cue => {
-										return { start: cue.startTime, end: cue.endTime, text: cue.text }
-									})
-								} else {
-									setTimeout(tryLoad, 300)
-								}
-							}
-							tryLoad()
-						}
-					}
-				}
-			}
-		})
-	</script>
+<script>
+new Vue({
+	el: '#app',
+	data() {
+		return {
+			mode: 'single',
+			// URLs relatives pour GitHub Pages
+			audioUrl: 'hpr4572.mp3',
+			vttUrl: 'hpr4572.vtt',
+			playlist: [
+				{ title:'Episode 1', url:'hpr4572.mp3', vtt:'hpr4572.vtt' },
+				{ title:'Episode 2', url:'hpr4573.mp3', vtt:'hpr4573.vtt' }
+			],
+			isPlaying: false,
+			showTranscript: false,
+			cues: [],
+			currentTime: 0,
+			currentIndex: 0,
+			error: null
+		}
+	},
+	computed: {
+		isPlaylistMode() { return this.mode === 'playlist' },
+		currentAudioUrl() { return this.isPlaylistMode ? this.playlist[this.currentIndex].url : this.audioUrl },
+		currentVttUrl() { return this.isPlaylistMode ? this.playlist[this.currentIndex].vtt : this.vttUrl }
+	},
+	watch: {
+		currentAudioUrl() { this.resetPlayer() }
+	},
+	mounted() {
+		this.loadCues()
+	},
+	methods: {
+		toggleMode() { this.mode = this.mode === 'single' ? 'playlist' : 'single'; this.resetPlayer() },
+		togglePlay() {
+			const audio = this.$refs.audio
+			if (!audio) { return } else { if (this.isPlaying) { audio.pause() } else { audio.play().catch(() => { this.error = 'Lecture bloquée par le navigateur' }) } this.isPlaying = !this.isPlaying }
+		},
+		rewind() { const audio = this.$refs.audio; if (audio) { audio.currentTime = Math.max(0, audio.currentTime - 15) } else { return } },
+		forward() { const audio = this.$refs.audio; if (audio) { audio.currentTime = audio.currentTime + 15 } else { return } },
+		updateTime() { const audio = this.$refs.audio; if (audio) { this.currentTime = audio.currentTime } else { return } },
+		onLoaded() { this.error = null },
+		onError() { this.error = 'Erreur de lecture (réseau ou format invalide)' },
+		toggleTranscript() { this.showTranscript = !this.showTranscript },
+		selectTrack(i) { this.currentIndex = i; this.isPlaying = false; this.$nextTick(() => { this.$refs.audio.load() }) },
+		resetPlayer() { this.isPlaying = false; this.error = null; this.currentTime = 0; this.cues = [] },
+		loadCues() {
+			const audio = this.$refs.audio
+			if (!audio) { return } else { const tracks = audio.textTracks; if (!tracks || !tracks.length) { return } else { const track = tracks[0]; track.mode = 'hidden'; const tryLoad = () => { if (track.cues && track.cues.length) { this.cues = Array.from(track.cues).map(cue => { return { start: cue.startTime, end: cue.endTime, text: cue.text } }) } else { setTimeout(tryLoad, 300) } }; tryLoad() } }
+		}
+	}
+})
+</script>
 
 </body>
-
 </html>
