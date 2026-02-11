@@ -1,0 +1,3552 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.560
+Now and then, I'd like to invite to the stage Simon Willison,
+
+
+00:00:02.560 --> 00:00:06.120
+who very kindly has offered to fill in the space
+
+
+00:00:06.120 --> 00:00:08.720
+and fill a much wider space.
+
+
+00:00:08.720 --> 00:00:11.520
+He normally accommodates some scheduling problems.
+
+
+00:00:11.520 --> 00:00:12.520
+And he will be talking to us
+
+
+00:00:12.520 --> 00:00:14.400
+about cowboy development with Django.
+
+
+00:00:14.400 --> 00:00:18.440
+(audience applauding)
+
+
+00:00:18.440 --> 00:00:24.440
+- Howdy, y'all.
+
+
+00:00:24.440 --> 00:00:25.280
+Howdy.
+
+
+00:00:26.880 --> 00:00:30.160
+I've called this talk Cowboy Development with Django
+
+
+00:00:30.160 --> 00:00:31.960
+because I'm going to talk about two projects
+
+
+00:00:31.960 --> 00:00:34.440
+I've recently completed using the cowboy
+
+
+00:00:34.440 --> 00:00:36.200
+software development process.
+
+
+00:00:36.200 --> 00:00:38.200
+This isn't Agile, this doesn't involve
+
+
+00:00:38.200 --> 00:00:40.640
+test-driven development and all of that stuff.
+
+
+00:00:40.640 --> 00:00:42.320
+No, this is all about hacking things together
+
+
+00:00:42.320 --> 00:00:44.400
+as fast as possible and hoping that they're
+
+
+00:00:44.400 --> 00:00:46.000
+sort of crossing your fingers and hoping
+
+
+00:00:46.000 --> 00:00:48.240
+that they'll hold up when faced with the world.
+
+
+00:00:48.240 --> 00:00:50.720
+But more importantly, having a cowboy theme
+
+
+00:00:50.720 --> 00:00:53.720
+to the talk means I get to have a cowboy theme tune.
+
+
+00:00:55.920 --> 00:01:02.920
+[Music]
+
+
+00:01:02.920 --> 00:01:05.920
+[Music]
+
+
+00:01:05.920 --> 00:01:07.920
+I can ride the pony if you like.
+
+
+00:01:07.920 --> 00:01:22.920
+[Music]
+
+
+00:01:22.920 --> 00:01:24.920
+Maybe that should have been our logo.
+
+
+00:01:24.920 --> 00:01:36.920
+[Music]
+
+
+00:01:36.920 --> 00:01:41.920
+So, I haven't seen the film, I'm largely informed that the coffin's got a machine gun in it.
+
+
+00:01:41.920 --> 00:01:43.920
+Which is kind of awesome.
+
+
+00:01:43.920 --> 00:01:52.920
+[Music]
+
+
+00:01:52.920 --> 00:01:54.920
+There's just one problem.
+
+
+00:01:54.920 --> 00:01:58.960
+We didn't have cowboys in England, and I am English.
+
+
+00:01:58.960 --> 00:02:01.960
+What we had instead was the Napoleonic Wars.
+
+
+00:02:01.960 --> 00:02:03.480
+Do you see what I did there?
+
+
+00:02:03.480 --> 00:02:06.640
+19th century, you guys were all racing around your prairies
+
+
+00:02:06.640 --> 00:02:09.720
+with your lassos and your bandits and all of that.
+
+
+00:02:09.720 --> 00:02:11.840
+We don't have prairies, so we had to make do
+
+
+00:02:11.840 --> 00:02:14.160
+with fighting the French, which is a longstanding
+
+
+00:02:14.160 --> 00:02:15.360
+English tradition.
+
+
+00:02:15.360 --> 00:02:17.960
+And if you're going to fight the Napoleonic Wars,
+
+
+00:02:17.960 --> 00:02:21.120
+this is the most appropriate transition ever,
+
+
+00:02:21.120 --> 00:02:24.080
+Obviously you need a Napoleonic sea fort.
+
+
+00:02:24.080 --> 00:02:26.640
+So, the first project I want to talk about you
+
+
+00:02:26.640 --> 00:02:29.120
+was built on this very fort here,
+
+
+00:02:29.120 --> 00:02:33.120
+in an event that we called Super Evil Dev Fort.
+
+
+00:02:33.120 --> 00:02:35.040
+Essentially what happened is,
+
+
+00:02:35.040 --> 00:02:36.600
+we had a bar camp in London,
+
+
+00:02:36.600 --> 00:02:38.400
+we often have bar camps in London,
+
+
+00:02:38.400 --> 00:02:40.960
+and a friend of mine stuck up a slide
+
+
+00:02:40.960 --> 00:02:42.920
+with a photograph of that fort,
+
+
+00:02:42.920 --> 00:02:44.600
+and said that he'd just been on holiday there,
+
+
+00:02:44.600 --> 00:02:46.120
+'cause you can rent it out.
+
+
+00:02:46.120 --> 00:02:48.400
+And so naturally, a bunch of us said,
+
+
+00:02:48.400 --> 00:02:50.280
+oh my God, we should totally rent a fort
+
+
+00:02:50.280 --> 00:02:53.320
+and take like 12 nerds out there and do nerdy things
+
+
+00:02:53.320 --> 00:02:54.600
+and make it the nerdiest FortNerd,
+
+
+00:02:54.600 --> 00:02:55.880
+that would be really cool.
+
+
+00:02:55.880 --> 00:02:58.180
+And then we thought, actually that would be really cool.
+
+
+00:02:58.180 --> 00:03:00.440
+So my friend James Eilert rented the Fort.
+
+
+00:03:00.440 --> 00:03:03.640
+Turns out you can rent the place for a week for 1,600 pounds
+
+
+00:03:03.640 --> 00:03:06.320
+which between 10 people works out at like the cost
+
+
+00:03:06.320 --> 00:03:07.840
+of two nights in a hotel room.
+
+
+00:03:07.840 --> 00:03:10.560
+And we set out last November with 12 geeks
+
+
+00:03:10.560 --> 00:03:13.520
+and as many laptops and cables
+
+
+00:03:13.520 --> 00:03:15.320
+and network things as possible.
+
+
+00:03:15.320 --> 00:03:17.900
+We set out to the Fort to build a website.
+
+
+00:03:17.900 --> 00:03:20.380
+This fort, this is Fort Clonk in Alderney.
+
+
+00:03:20.380 --> 00:03:24.700
+It's awesome, it has a gatehouse, a soldiers quarters.
+
+
+00:03:24.700 --> 00:03:25.900
+There's a German casement,
+
+
+00:03:25.900 --> 00:03:28.660
+that's a genuine Nazi machine gun nest
+
+
+00:03:28.660 --> 00:03:30.260
+built by genuine Nazis.
+
+
+00:03:30.260 --> 00:03:32.940
+They took over the island in the 1940s
+
+
+00:03:32.940 --> 00:03:34.660
+'cause they thought if it's got a seafort there,
+
+
+00:03:34.660 --> 00:03:35.500
+it must be important.
+
+
+00:03:35.500 --> 00:03:36.940
+Turns out the seafort itself
+
+
+00:03:36.940 --> 00:03:39.300
+was never actually used for anything.
+
+
+00:03:39.300 --> 00:03:41.620
+So that's, this is Alderney, the island it's on.
+
+
+00:03:41.620 --> 00:03:45.140
+That in the bottom, that's our seafort, Fort Clonk.
+
+
+00:03:45.140 --> 00:03:47.740
+The fort has a causeway which gets flooded
+
+
+00:03:47.740 --> 00:03:50.420
+twice a day, meaning you're completely cut off
+
+
+00:03:50.420 --> 00:03:51.260
+from the mainland.
+
+
+00:03:51.260 --> 00:03:52.500
+It goes without saying the fort does not have
+
+
+00:03:52.500 --> 00:03:53.340
+an internet connection.
+
+
+00:03:53.340 --> 00:03:54.740
+This meant that our productivity went up
+
+
+00:03:54.740 --> 00:03:57.080
+by about a factor of 20.
+
+
+00:03:57.080 --> 00:03:59.820
+You get a fully equipped kitchen.
+
+
+00:03:59.820 --> 00:04:01.700
+The bedrooms, that bedroom, the lower bedroom there
+
+
+00:04:01.700 --> 00:04:03.900
+is actually in the Nazi machine gun placement.
+
+
+00:04:03.900 --> 00:04:06.180
+The machine gun nest is now a picturesque window
+
+
+00:04:06.180 --> 00:04:08.060
+looking out over the English Channel.
+
+
+00:04:08.060 --> 00:04:09.180
+(audience laughing)
+
+
+00:04:09.180 --> 00:04:11.260
+And so we spent a whole bunch of time,
+
+
+00:04:11.260 --> 00:04:13.220
+well we spent most of our time hacking, to be honest,
+
+
+00:04:13.220 --> 00:04:14.500
+'cause the weather was terrible.
+
+
+00:04:14.500 --> 00:04:16.340
+But it turns out, terrible weather and a fort
+
+
+00:04:16.340 --> 00:04:19.340
+with six foot walls is actually a really good combination.
+
+
+00:04:19.340 --> 00:04:22.940
+And this is the main sort of living area
+
+
+00:04:22.940 --> 00:04:24.780
+where we all hacked on sofas for a week.
+
+
+00:04:24.780 --> 00:04:26.620
+Down there, this is one of the conditions
+
+
+00:04:26.620 --> 00:04:29.140
+of renting the fort is that you have to raise a flag
+
+
+00:04:29.140 --> 00:04:31.660
+once a day and play the bugle when you do.
+
+
+00:04:31.660 --> 00:04:34.220
+So that's my fiancee there playing the bugle.
+
+
+00:04:34.220 --> 00:04:35.700
+She was surprisingly good at it.
+
+
+00:04:35.700 --> 00:04:38.340
+And these are the sort of nice happy group photos
+
+
+00:04:38.340 --> 00:04:41.580
+of us all enjoying ourselves on the fort.
+
+
+00:04:41.580 --> 00:04:43.940
+But what we built, I'll show you the site we built
+
+
+00:04:43.940 --> 00:04:46.440
+because we actually, in fact,
+
+
+00:04:46.440 --> 00:04:48.560
+so the site we built,
+
+
+00:04:48.560 --> 00:04:50.360
+it's a site called wildlifenearyou.com.
+
+
+00:04:50.360 --> 00:04:52.440
+This is the site that took a week to build
+
+
+00:04:52.440 --> 00:04:54.400
+and then an extra 10 months to actually get it
+
+
+00:04:54.400 --> 00:04:55.520
+to a point where we could launch it.
+
+
+00:04:55.520 --> 00:04:58.680
+This is the downside of cowboy development, if you like.
+
+
+00:04:58.680 --> 00:05:00.560
+And so I'll show you a demo.
+
+
+00:05:00.560 --> 00:05:02.080
+This is, it's the 80/20 thing.
+
+
+00:05:02.080 --> 00:05:04.880
+Now 20% of the functionality takes 80% of the time.
+
+
+00:05:04.880 --> 00:05:06.280
+And like I said, your productivity
+
+
+00:05:06.280 --> 00:05:09.220
+when you're off the fork goes down somewhat.
+
+
+00:05:09.220 --> 00:05:12.240
+So I'll switch on mirroring and show you what the site is.
+
+
+00:05:12.240 --> 00:05:17.240
+So, wildlifenearyou.com is a site that solves the critically important question,
+
+
+00:05:17.240 --> 00:05:19.240
+"Where is my nearest otter?"
+
+
+00:05:19.240 --> 00:05:21.240
+So, we're in Portland.
+
+
+00:05:21.240 --> 00:05:25.240
+I can type "otters near Portland" into the search box,
+
+
+00:05:25.240 --> 00:05:30.240
+and apparently our nearest otter is 4,885 miles away
+
+
+00:05:30.240 --> 00:05:33.240
+in Sheppard Wildlife Park in Boyston.
+
+
+00:05:33.240 --> 00:05:38.240
+The flip side of the site is this is a classic user-generated content site.
+
+
+00:05:38.240 --> 00:05:40.240
+Until someone in America enters an otter,
+
+
+00:05:40.240 --> 00:05:42.960
+we're going to keep on sending you over to England to find otters.
+
+
+00:05:42.960 --> 00:05:49.400
+So there are two aspects to the site. There's a search engine for, say, tigers or llamas
+
+
+00:05:49.400 --> 00:05:52.280
+near Brighton's a good one, because there happen to be llamas near Brighton that we
+
+
+00:05:52.280 --> 00:05:56.880
+know about. There you go. If you're in Brighton, your nearest llama is at Ashdown Forest Llama
+
+
+00:05:56.880 --> 00:06:01.360
+Farm, which I haven't been to yet, but it sounds amazing.
+
+
+00:06:01.360 --> 00:06:05.760
+And so the flip side of Wildlife.nu is you sign up for the site, and you please don't
+
+
+00:06:05.760 --> 00:06:09.960
+tweet a link to this gist yet. I'll explain why in a moment. And you can say you've been
+
+
+00:06:09.960 --> 00:06:14.520
+to London Zoo and it'll say "Do you mean this London Zoo?" and you say "Yes" and then you
+
+
+00:06:14.520 --> 00:06:21.520
+tell it "I saw a panda and I saw a... give me an animal."
+
+
+00:06:21.520 --> 00:06:22.520
+"Gibbon."
+
+
+00:06:22.520 --> 00:06:23.520
+A gibbon.
+
+
+00:06:23.520 --> 00:06:24.520
+That's a good one.
+
+
+00:06:24.520 --> 00:06:25.520
+Good animal.
+
+
+00:06:25.520 --> 00:06:26.520
+"I saw a gibbon."
+
+
+00:06:26.520 --> 00:06:27.520
+Oh, it was a Mullers-Bornean gibbon, actually.
+
+
+00:06:27.520 --> 00:06:32.520
+And then you click "Finish adding this trip" and you can say the date you took the trip,
+
+
+00:06:32.520 --> 00:06:35.920
+if you thought the zoo was nice or horrible, your rating for the trip, sort of one to five
+
+
+00:06:35.920 --> 00:06:37.560
+stars and so forth.
+
+
+00:06:37.560 --> 00:06:39.800
+And once you've done that, it ends up on your trips page,
+
+
+00:06:39.800 --> 00:06:41.400
+so you can collect all of the trips.
+
+
+00:06:41.400 --> 00:06:45.240
+It's like Flickr for trips to the zoo, if you like.
+
+
+00:06:45.240 --> 00:06:47.960
+And so we built most of this on the fort,
+
+
+00:06:47.960 --> 00:06:49.160
+and then we added a few extra things
+
+
+00:06:49.160 --> 00:06:51.560
+like the import your photos from Flickr integration
+
+
+00:06:51.560 --> 00:06:53.000
+once we got home, 'cause it's quite hard
+
+
+00:06:53.000 --> 00:06:55.880
+to import from Flickr when you can't talk to Flickr.
+
+
+00:06:55.880 --> 00:06:59.480
+And the reason I ask you not to tweet it
+
+
+00:06:59.480 --> 00:07:02.320
+is the site is live, as of a few days ago.
+
+
+00:07:02.320 --> 00:07:04.520
+We don't want to start promoting it widely
+
+
+00:07:04.520 --> 00:07:05.760
+until we've got some data in it.
+
+
+00:07:05.760 --> 00:07:10.160
+We want otters near Portland to have something within a thousand miles maybe.
+
+
+00:07:10.160 --> 00:07:14.400
+But please, if you go to alpha.worldlefneru.com, you can use the site right now, enter your
+
+
+00:07:14.400 --> 00:07:15.400
+trips to the zoo.
+
+
+00:07:15.400 --> 00:07:19.440
+I'm hoping to arrange a trip to Portland Zoo on Friday or Saturday or something.
+
+
+00:07:19.440 --> 00:07:20.440
+It's all good.
+
+
+00:07:20.440 --> 00:07:29.120
+But this did lead to a slight problem for the whole super evil dev fort concept.
+
+
+00:07:29.120 --> 00:07:31.640
+Building a website about fluffy animals isn't particularly evil.
+
+
+00:07:31.640 --> 00:07:34.280
+So we've since renamed super evil dev fort.
+
+
+00:07:34.280 --> 00:07:37.280
+It was named, of course, after Super Happy Dev House,
+
+
+00:07:37.280 --> 00:07:40.280
+which is this Californian thing where a bunch of happy people
+
+
+00:07:40.280 --> 00:07:43.280
+get together and they're happy in a house where they hack together
+
+
+00:07:43.280 --> 00:07:45.280
+and it's all very happy.
+
+
+00:07:45.280 --> 00:07:47.280
+So we're now just called Dev Fort.
+
+
+00:07:47.280 --> 00:07:49.280
+We've done another event since then.
+
+
+00:07:49.280 --> 00:07:51.280
+We've got another one coming up soon.
+
+
+00:07:51.280 --> 00:07:55.280
+And I could not recommend this more as a way of getting out of the creative block
+
+
+00:07:55.280 --> 00:07:57.280
+or just having an enormous amount of fun.
+
+
+00:07:57.280 --> 00:08:00.280
+It turns out the world, at least Europe, is littered with old castles
+
+
+00:08:00.280 --> 00:08:02.280
+and old buildings that you can rent.
+
+
+00:08:02.280 --> 00:08:07.640
+I imagine you've probably got stuff that's about 150 years old here, which is ancient
+
+
+00:08:07.640 --> 00:08:08.640
+by your standards.
+
+
+00:08:08.640 --> 00:08:11.640
+A couple of interesting things about Wildlife.nu.
+
+
+00:08:11.640 --> 00:08:15.640
+The search feature is powered by Zapian.
+
+
+00:08:15.640 --> 00:08:18.560
+Zapian is an open source search engine.
+
+
+00:08:18.560 --> 00:08:21.960
+The reason we use Zapian is that one of the developers of Zapian was on the fort with
+
+
+00:08:21.960 --> 00:08:23.280
+us, which was really convenient.
+
+
+00:08:23.280 --> 00:08:28.000
+So he actually built us a solar-style web service interface to Zapian.
+
+
+00:08:28.000 --> 00:08:29.560
+Our species database is from Freebase.
+
+
+00:08:29.560 --> 00:08:31.760
+We've got the Flickr import thing.
+
+
+00:08:31.760 --> 00:08:33.960
+The most interesting feature, which I forgot to demo you,
+
+
+00:08:33.960 --> 00:08:36.700
+is you can suggest changes to our zoo listings.
+
+
+00:08:36.700 --> 00:08:40.240
+You can say, actually, this zoo's phone number is this,
+
+
+00:08:40.240 --> 00:08:42.560
+or the address has changed to this, or whatever.
+
+
+00:08:42.560 --> 00:08:46.000
+And we have a model for representing
+
+
+00:08:46.000 --> 00:08:48.160
+proposed changes to other models,
+
+
+00:08:48.160 --> 00:08:49.640
+which we then stash in our database
+
+
+00:08:49.640 --> 00:08:52.160
+and so we have a moderation queue and stuff like that.
+
+
+00:08:52.160 --> 00:08:53.440
+So that's DevFort.
+
+
+00:08:53.440 --> 00:08:56.400
+This is cowboy development on holiday,
+
+
+00:08:56.400 --> 00:08:57.600
+which is fair enough, you're on holiday,
+
+
+00:08:57.600 --> 00:08:59.020
+nobody can tell you how to develop.
+
+
+00:08:59.020 --> 00:09:00.800
+But how can you go about getting away
+
+
+00:09:00.800 --> 00:09:02.740
+the cowboy development at work?
+
+
+00:09:02.740 --> 00:09:04.940
+That's obviously the really important question here.
+
+
+00:09:04.940 --> 00:09:06.780
+So, for those of you who don't know,
+
+
+00:09:06.780 --> 00:09:08.300
+I work for The Guardian newspaper.
+
+
+00:09:08.300 --> 00:09:11.500
+The Guardian is one of the major national newspapers
+
+
+00:09:11.500 --> 00:09:13.560
+in England, it has an international reach,
+
+
+00:09:13.560 --> 00:09:17.220
+30 million unique visitors a month to the website.
+
+
+00:09:17.220 --> 00:09:19.380
+Really fantastic engineering team.
+
+
+00:09:19.380 --> 00:09:23.920
+They built from scratch a custom Java Oracle CMS.
+
+
+00:09:23.920 --> 00:09:25.540
+They built it on time and on budget,
+
+
+00:09:25.540 --> 00:09:26.580
+which for Enterprise Java I think
+
+
+00:09:26.580 --> 00:09:28.020
+is quite frankly a miracle.
+
+
+00:09:28.020 --> 00:09:30.300
+And the things, I've never seen the thing go down
+
+
+00:09:30.300 --> 00:09:32.440
+and it serves enormous amounts of traffic.
+
+
+00:09:32.440 --> 00:09:34.460
+So I joined the Guardian last year,
+
+
+00:09:34.460 --> 00:09:37.580
+and my remit there, I do all sorts of bits and pieces,
+
+
+00:09:37.580 --> 00:09:39.700
+but one of the things that I'm really focusing on there
+
+
+00:09:39.700 --> 00:09:42.040
+is trying to make it so we can build things faster,
+
+
+00:09:42.040 --> 00:09:45.240
+because the Enterprise Java stack works fantastically well
+
+
+00:09:45.240 --> 00:09:47.540
+for building sort of robust, reliable applications,
+
+
+00:09:47.540 --> 00:09:49.240
+but it's not so great if you want to turn something around
+
+
+00:09:49.240 --> 00:09:51.740
+in a couple of days or a week.
+
+
+00:09:51.740 --> 00:09:54.640
+So I've spent a whole bunch of time there
+
+
+00:09:54.640 --> 00:09:55.480
+quietly thinking to myself,
+
+
+00:09:55.480 --> 00:09:57.540
+how can I do some cowboy development in an environment
+
+
+00:09:57.540 --> 00:10:00.460
+where people actually do real software engineering.
+
+
+00:10:00.460 --> 00:10:02.940
+And actually the opportunity came up a few months ago,
+
+
+00:10:02.940 --> 00:10:06.420
+thanks to our MPs in England.
+
+
+00:10:06.420 --> 00:10:08.220
+This was the, has anyone here heard about
+
+
+00:10:08.220 --> 00:10:10.300
+the UK MP expenses scandal?
+
+
+00:10:10.300 --> 00:10:14.220
+Quite a few people actually, that's a surprise.
+
+
+00:10:14.220 --> 00:10:17.220
+Normally in England we pay enormous attention
+
+
+00:10:17.220 --> 00:10:19.960
+to US politics because, well for one thing,
+
+
+00:10:19.960 --> 00:10:21.460
+you guys have actual villains.
+
+
+00:10:21.460 --> 00:10:24.220
+I don't think any of our MPs have ever shot a wolf
+
+
+00:10:24.220 --> 00:10:26.100
+from a helicopter or anything like that.
+
+
+00:10:26.100 --> 00:10:29.220
+Or did he have a guy who had $100,000 in his freezer?
+
+
+00:10:29.220 --> 00:10:31.860
+I thought that was particularly classy.
+
+
+00:10:31.860 --> 00:10:36.220
+UK political scandals are a little less exciting.
+
+
+00:10:36.220 --> 00:10:38.700
+The MP expenses scandal, it was found that our MPs
+
+
+00:10:38.700 --> 00:10:41.460
+have been claiming on expenses for things
+
+
+00:10:41.460 --> 00:10:42.280
+that they shouldn't have.
+
+
+00:10:42.280 --> 00:10:44.220
+One of them claimed for some dog food.
+
+
+00:10:44.220 --> 00:10:46.980
+As taxpayers, we thought that that wasn't appropriate.
+
+
+00:10:46.980 --> 00:10:50.060
+So it's not quite $100,000 in the freezer.
+
+
+00:10:50.060 --> 00:10:52.620
+A better example is an MP who attempted to claim
+
+
+00:10:52.620 --> 00:10:55.660
+for an Oriental duck house for their duck pond.
+
+
+00:10:55.660 --> 00:11:00.660
+There was another one who made a claim to help clean out the moat around his private house,
+
+
+00:11:00.660 --> 00:11:04.660
+which played up to a whole bunch of fantastic Tory stereotypes.
+
+
+00:11:04.660 --> 00:11:10.660
+But anyway, the MP expenses scandal originally... the story starts, but it's this woman.
+
+
+00:11:10.660 --> 00:11:13.660
+This is Heather Brooke. She's a freelance journalist.
+
+
+00:11:13.660 --> 00:11:19.660
+And in 2005, she filed a Freedom of Information request asking to see the paperwork
+
+
+00:11:19.660 --> 00:11:21.660
+on what MPs have been claiming on their expenses.
+
+
+00:11:21.660 --> 00:11:25.660
+And of course there's freedom of information requests taken very seriously.
+
+
+00:11:25.660 --> 00:11:31.660
+So three years later, in February of 2008, after everyone had been stalling and all sorts of things,
+
+
+00:11:31.660 --> 00:11:36.660
+it got sent to the Information Tribunal, where a lawyer for Parliament famously said,
+
+
+00:11:36.660 --> 00:11:40.660
+"Transparency will damage democracy. This is why we shouldn't release our expenses."
+
+
+00:11:40.660 --> 00:11:43.660
+Which I thought was awesome.
+
+
+00:11:43.660 --> 00:11:47.660
+So the MPs were told they had to release their expenses.
+
+
+00:11:47.660 --> 00:11:53.660
+In 2009, they quietly tried to pass a law saying that they were exempt from the Freedom of Information Act
+
+
+00:11:53.660 --> 00:11:59.660
+and they announced it on the same day as the government announced proposals to extend Heathrow, to build a third runway at Heathrow
+
+
+00:11:59.660 --> 00:12:02.660
+which normally would have buried the story, but thankfully we have the internet now.
+
+
+00:12:02.660 --> 00:12:08.660
+My Society put out a campaign saying, "You've got six days left to kill this bill."
+
+
+00:12:08.660 --> 00:12:11.660
+Blimey, it looks like the internet's won, we actually managed to kill it.
+
+
+00:12:11.660 --> 00:12:15.660
+So the MPs had run out of options and they had to reveal their expenses.
+
+
+00:12:15.660 --> 00:12:18.660
+They stalled again, they said, "Well, no, we've got to go through and censor them.
+
+
+00:12:18.660 --> 00:12:22.660
+We've got to black out any of our addresses or things that mean that our angry constituents
+
+
+00:12:22.660 --> 00:12:25.660
+will come and burn our houses down."
+
+
+00:12:25.660 --> 00:12:29.660
+Then in March 2009, there was a mole.
+
+
+00:12:29.660 --> 00:12:34.660
+An MP on Newsnight said, "All of the receipts of 650-odd MPs, both redacted and unredacted,
+
+
+00:12:34.660 --> 00:12:37.660
+are for sale at a price of Â£300,000."
+
+
+00:12:37.660 --> 00:12:43.660
+So evidently someone in Parliament decided to do the honourable thing and leak these expenses,
+
+
+00:12:43.660 --> 00:12:47.660
+but slightly less honorable in trying to make the six figure sum out of it.
+
+
+00:12:47.660 --> 00:12:55.660
+A month and a half later, the Daily Telegraph newspaper suddenly came into possession of a CD-ROM with 650 MPs' expenses on.
+
+
+00:12:55.660 --> 00:13:01.660
+And as someone who works for a different newspaper, I couldn't possibly comment on how they might have got hold of those.
+
+
+00:13:01.660 --> 00:13:10.660
+And that was... the next month and a half, the only thing in the UK news was revelations upon revelation about MPs' expenses
+
+
+00:13:10.660 --> 00:13:12.620
+and things people have been claiming,
+
+
+00:13:12.620 --> 00:13:14.700
+and dodgy mortgages, and second houses,
+
+
+00:13:14.700 --> 00:13:17.720
+and some of the, just an enormous list of stuff.
+
+
+00:13:17.720 --> 00:13:19.420
+If you want to go through the dirty details,
+
+
+00:13:19.420 --> 00:13:22.060
+there's some excellent coverage online.
+
+
+00:13:22.060 --> 00:13:24.740
+So meanwhile at the Guardian, where we,
+
+
+00:13:24.740 --> 00:13:26.140
+yeah, I won't say anymore about that.
+
+
+00:13:26.140 --> 00:13:28.040
+And meanwhile at the Guardian,
+
+
+00:13:28.040 --> 00:13:31.140
+in April we heard that the expenses were finally coming out.
+
+
+00:13:31.140 --> 00:13:32.460
+The government set a date,
+
+
+00:13:32.460 --> 00:13:34.060
+and so I was in a meeting and someone said,
+
+
+00:13:34.060 --> 00:13:35.840
+so they're coming out with all these documents.
+
+
+00:13:35.840 --> 00:13:38.020
+Is there anything like neat and technology-like
+
+
+00:13:38.020 --> 00:13:39.900
+we can do with these?
+
+
+00:13:39.900 --> 00:13:43.780
+And then in June, we suddenly got word
+
+
+00:13:43.780 --> 00:13:44.980
+that the expense has been bumped forward
+
+
+00:13:44.980 --> 00:13:45.900
+and will be out next week.
+
+
+00:13:45.900 --> 00:13:47.840
+So we now have a week period,
+
+
+00:13:47.840 --> 00:13:51.600
+we have one week before all of these documents are released.
+
+
+00:13:51.600 --> 00:13:54.180
+And this, like I said, I was looking for an opportunity
+
+
+00:13:54.180 --> 00:13:55.140
+for cowboy development.
+
+
+00:13:55.140 --> 00:13:57.660
+This was pretty much the perfect opportunity.
+
+
+00:13:57.660 --> 00:13:59.620
+You've got a strong, strict deadline.
+
+
+00:13:59.620 --> 00:14:01.900
+You've got a week to do something.
+
+
+00:14:01.900 --> 00:14:03.480
+And so on the first day of June,
+
+
+00:14:03.480 --> 00:14:05.220
+I knocked out a proof of concept,
+
+
+00:14:05.220 --> 00:14:07.340
+sort of a very naughty little Django app
+
+
+00:14:07.340 --> 00:14:10.340
+that showed how we could crowdsource
+
+
+00:14:10.340 --> 00:14:11.540
+the analysis of these documents.
+
+
+00:14:11.540 --> 00:14:13.620
+So we could show people a random page
+
+
+00:14:13.620 --> 00:14:15.680
+of random documents, say, does this look dodgy?
+
+
+00:14:15.680 --> 00:14:17.220
+And they could say yes or no.
+
+
+00:14:17.220 --> 00:14:18.640
+And if we've got enough people looking at them,
+
+
+00:14:18.640 --> 00:14:20.300
+we could work through them all.
+
+
+00:14:20.300 --> 00:14:22.060
+On the Monday, I got the tentative go-ahead
+
+
+00:14:22.060 --> 00:14:23.640
+to turn this into a real thing.
+
+
+00:14:23.640 --> 00:14:25.140
+On Tuesday, I was given a designer
+
+
+00:14:25.140 --> 00:14:26.780
+and client-side engineer to, I mean,
+
+
+00:14:26.780 --> 00:14:28.380
+this is the great thing about working in Django,
+
+
+00:14:28.380 --> 00:14:29.340
+is once you've got the templates,
+
+
+00:14:29.340 --> 00:14:31.500
+you can throw them over the wall and such.
+
+
+00:14:31.500 --> 00:14:33.340
+On Wednesday, we had an operations engineer,
+
+
+00:14:33.340 --> 00:14:35.380
+so we can actually deploy this thing.
+
+
+00:14:35.380 --> 00:14:37.740
+And on Thursday, we went live.
+
+
+00:14:37.740 --> 00:14:41.020
+So it was a week from start to finish of this project.
+
+
+00:14:41.020 --> 00:14:42.140
+This is what the website looks like.
+
+
+00:14:42.140 --> 00:14:44.820
+This is the investigate your MPs expenses site.
+
+
+00:14:44.820 --> 00:14:49.260
+We've got a progress bar showing you
+
+
+00:14:49.260 --> 00:14:51.700
+how many of these documents we've reviewed,
+
+
+00:14:51.700 --> 00:14:55.020
+saying 22,000 of you who've reviewed 192,000 of them,
+
+
+00:14:55.020 --> 00:14:56.060
+only so many to go.
+
+
+00:14:56.060 --> 00:14:59.140
+And this big red bar, it was critically acclaimed.
+
+
+00:14:59.140 --> 00:15:00.220
+All over the internet, people were saying,
+
+
+00:15:00.220 --> 00:15:01.300
+that red bar's genius,
+
+
+00:15:01.300 --> 00:15:02.740
+that's the only reason people are going back.
+
+
+00:15:02.740 --> 00:15:04.220
+And to be honest, the red bar was added
+
+
+00:15:04.220 --> 00:15:07.780
+because Django has that convenient width ratio template tag.
+
+
+00:15:07.780 --> 00:15:09.700
+So it was as easy to do it as not.
+
+
+00:15:09.700 --> 00:15:12.340
+But I'll take the credit for design genius
+
+
+00:15:12.340 --> 00:15:13.660
+that people really want to do that.
+
+
+00:15:13.660 --> 00:15:15.340
+So if you click start reviewing,
+
+
+00:15:15.340 --> 00:15:17.780
+you get a page of random MPs expenses.
+
+
+00:15:17.780 --> 00:15:18.620
+And you get two questions.
+
+
+00:15:18.620 --> 00:15:19.900
+You get what kind of page is this?
+
+
+00:15:19.900 --> 00:15:21.120
+Is this a claim form?
+
+
+00:15:21.120 --> 00:15:21.960
+Is it a receipt?
+
+
+00:15:21.960 --> 00:15:23.500
+Or is it blank or other?
+
+
+00:15:23.500 --> 00:15:26.040
+And you get a question, is this what page interesting?
+
+
+00:15:26.040 --> 00:15:29.580
+Should our journalists go out and investigate further?
+
+
+00:15:29.580 --> 00:15:31.620
+And so we've got not interesting, interesting,
+
+
+00:15:31.620 --> 00:15:34.420
+interesting but known, e.g. it's an ornamental duck house,
+
+
+00:15:34.420 --> 00:15:35.860
+and investigate this.
+
+
+00:15:35.860 --> 00:15:38.180
+And the idea was that people hit that button
+
+
+00:15:38.180 --> 00:15:39.900
+and one of our journalists springs into action
+
+
+00:15:39.900 --> 00:15:42.860
+and phones up MPs and figures out what's going on.
+
+
+00:15:42.860 --> 00:15:44.080
+And also people with more time,
+
+
+00:15:44.080 --> 00:15:45.620
+we invited to add line items.
+
+
+00:15:45.620 --> 00:15:48.360
+So if there were numbers on the page,
+
+
+00:15:48.360 --> 00:15:49.540
+we'd ask people to type them in,
+
+
+00:15:49.540 --> 00:15:51.940
+say what they were, potentially categorize them as well,
+
+
+00:15:51.940 --> 00:15:54.980
+so that we could start adding up all of the numbers
+
+
+00:15:54.980 --> 00:15:57.380
+on all of these 450,000 pages of documents
+
+
+00:15:57.380 --> 00:15:59.780
+and see if they added up to anything interesting.
+
+
+00:15:59.780 --> 00:16:01.220
+Each MP gets their own page.
+
+
+00:16:01.220 --> 00:16:04.560
+we found we had pictures for the MPs, which is fantastic,
+
+
+00:16:04.560 --> 00:16:07.300
+'cause when you're digging through someone's expenses,
+
+
+00:16:07.300 --> 00:16:10.100
+it's really sort of satisfying to have their smug face
+
+
+00:16:10.100 --> 00:16:12.780
+from a press job staring out of the screen at you.
+
+
+00:16:12.780 --> 00:16:17.900
+And as time went on, we added up the various documents,
+
+
+00:16:17.900 --> 00:16:20.820
+we added up the different line items.
+
+
+00:16:20.820 --> 00:16:23.820
+This was sort of leg two of the MPs expenses scandal,
+
+
+00:16:23.820 --> 00:16:25.200
+is when these documents finally came out,
+
+
+00:16:25.200 --> 00:16:27.220
+half of them were blacked out.
+
+
+00:16:27.220 --> 00:16:28.660
+There are some wonderful examples of pages
+
+
+00:16:28.660 --> 00:16:31.820
+where everything's blacked out except the number.
+
+
+00:16:31.820 --> 00:16:34.340
+And so this is a set of thumbnails from the document
+
+
+00:16:34.340 --> 00:16:37.340
+showing you quite how much redaction was going on.
+
+
+00:16:37.340 --> 00:16:39.580
+There's an interesting feature down the side.
+
+
+00:16:39.580 --> 00:16:42.580
+You can see these filters, so you can filter this document
+
+
+00:16:42.580 --> 00:16:44.380
+by pages that have already been reviewed,
+
+
+00:16:44.380 --> 00:16:46.260
+pages that someone's marked as interesting,
+
+
+00:16:46.260 --> 00:16:47.220
+that kind of thing.
+
+
+00:16:47.220 --> 00:16:50.360
+And so here's how we built it.
+
+
+00:16:50.360 --> 00:16:52.180
+The only reason this project was possible
+
+
+00:16:52.180 --> 00:16:54.700
+is that a few of the MPs had decided
+
+
+00:16:54.700 --> 00:16:56.180
+that this scandal wasn't gonna go away,
+
+
+00:16:56.180 --> 00:16:57.500
+and the best thing they could possibly do
+
+
+00:16:57.500 --> 00:16:59.300
+is release their expenses early,
+
+
+00:16:59.300 --> 00:17:01.180
+stick them up on their own sort of personal websites
+
+
+00:17:01.180 --> 00:17:02.980
+and say, look, I've got nothing to hide.
+
+
+00:17:02.980 --> 00:17:05.200
+And there were about four or five MPs that did this,
+
+
+00:17:05.200 --> 00:17:07.100
+which was brilliant because it gave us a preview
+
+
+00:17:07.100 --> 00:17:08.660
+of what the data was going to look like
+
+
+00:17:08.660 --> 00:17:09.820
+when it was released.
+
+
+00:17:09.820 --> 00:17:12.820
+And the data, it was sort of a worst case scenario
+
+
+00:17:12.820 --> 00:17:13.940
+from the point of view of actually trying
+
+
+00:17:13.940 --> 00:17:15.720
+to do proper investigative reporting.
+
+
+00:17:15.720 --> 00:17:19.940
+It was scanned A4 pages with handwritten scrolls
+
+
+00:17:19.940 --> 00:17:23.020
+in the forms and wonky angles and bits blacked out
+
+
+00:17:23.020 --> 00:17:24.500
+and the whole works.
+
+
+00:17:25.740 --> 00:17:29.300
+But actually, so step one was to convert those into images.
+
+
+00:17:29.300 --> 00:17:32.460
+ImageMagick turns out if you run convert pdf space
+
+
+00:17:32.460 --> 00:17:35.420
+something.png, it splits pdf files
+
+
+00:17:35.420 --> 00:17:37.220
+into a single image per page
+
+
+00:17:37.220 --> 00:17:38.540
+and does the whole conversion and everything.
+
+
+00:17:38.540 --> 00:17:41.060
+So the idea was just to run that command
+
+
+00:17:41.060 --> 00:17:43.140
+on every single document and then we'd be fine.
+
+
+00:17:43.140 --> 00:17:46.180
+We pulled in a list of MPs from theyworkforyou.com.
+
+
+00:17:46.180 --> 00:17:48.700
+We implemented what I call frictionless registration,
+
+
+00:17:48.700 --> 00:17:50.820
+the idea being we didn't want you to have to register
+
+
+00:17:50.820 --> 00:17:52.940
+for an account before you could start auditing,
+
+
+00:17:52.940 --> 00:17:54.740
+but at the same time, if you're an MP
+
+
+00:17:54.740 --> 00:17:56.180
+and you're going through all of your expenses
+
+
+00:17:56.180 --> 00:17:57.180
+and saying, "This doesn't look dodgy,
+
+
+00:17:57.180 --> 00:17:58.020
+"this doesn't look dodgy."
+
+
+00:17:58.020 --> 00:17:59.980
+We kind of want to be able to catch you out.
+
+
+00:17:59.980 --> 00:18:01.980
+So what we did is the first time you vote,
+
+
+00:18:01.980 --> 00:18:03.820
+we create you an anonymous user account
+
+
+00:18:03.820 --> 00:18:06.460
+called like, "Canon 253."
+
+
+00:18:06.460 --> 00:18:10.140
+And we then add a nag bar at the top of the page
+
+
+00:18:10.140 --> 00:18:11.420
+asking you to set a username.
+
+
+00:18:11.420 --> 00:18:13.340
+Give you a carrot and say, "Pick yourself a username
+
+
+00:18:13.340 --> 00:18:15.780
+"to see all of your contributions on the page."
+
+
+00:18:15.780 --> 00:18:18.220
+And the idea is that once you review a whole bunch of things
+
+
+00:18:18.220 --> 00:18:19.380
+they all get added to your account,
+
+
+00:18:19.380 --> 00:18:20.660
+eventually you set a username
+
+
+00:18:20.660 --> 00:18:22.140
+and then we've at least got something we can show
+
+
+00:18:22.140 --> 00:18:23.740
+in a high score table or whatever.
+
+
+00:18:23.740 --> 00:18:26.780
+Once you've set a username, we'd like you to set a password.
+
+
+00:18:26.780 --> 00:18:28.300
+I showed you those page filters earlier,
+
+
+00:18:28.300 --> 00:18:29.780
+these things down here.
+
+
+00:18:29.780 --> 00:18:32.100
+Those were nice and easy to build thanks to the Django ORM.
+
+
+00:18:32.100 --> 00:18:35.140
+We just had a data structure that mapped
+
+
+00:18:35.140 --> 00:18:38.660
+the names of the categories to the ORM query params
+
+
+00:18:38.660 --> 00:18:41.440
+that you need to run to pull those out of the site.
+
+
+00:18:41.440 --> 00:18:44.820
+And then a little bit of code to build up those filters.
+
+
+00:18:44.820 --> 00:18:46.820
+The other problem we had to solve was matching the names.
+
+
+00:18:46.820 --> 00:18:50.140
+So we had a whole bunch of MPs.
+
+
+00:18:50.140 --> 00:18:53.700
+We had, so we had our idea of what an MP's name was,
+
+
+00:18:53.700 --> 00:18:55.780
+like John Maxwell or something,
+
+
+00:18:55.780 --> 00:18:58.020
+and then the government might call them Jonathan Maxwell
+
+
+00:18:58.020 --> 00:18:59.500
+on the files that we downloaded.
+
+
+00:18:59.500 --> 00:19:02.740
+So we needed a way to map those two data sets to each other.
+
+
+00:19:02.740 --> 00:19:05.180
+This is a tool I built a few months previously,
+
+
+00:19:05.180 --> 00:19:07.300
+which basically does exactly that.
+
+
+00:19:07.300 --> 00:19:09.580
+You give it two sets of similar data.
+
+
+00:19:09.580 --> 00:19:11.780
+It uses Levenstein distance to guess
+
+
+00:19:11.780 --> 00:19:13.300
+which ones are the same thing,
+
+
+00:19:13.300 --> 00:19:14.940
+and it highlights the ones that were a guess
+
+
+00:19:14.940 --> 00:19:17.300
+so that you can go through and manually set them up.
+
+
+00:19:17.300 --> 00:19:18.500
+Abby Bryant will be pleased to know
+
+
+00:19:18.500 --> 00:19:20.540
+that this is written entirely in JavaScript,
+
+
+00:19:20.540 --> 00:19:22.300
+so we are jumping on that bandwagon
+
+
+00:19:22.300 --> 00:19:24.460
+just to train you a little bit.
+
+
+00:19:24.460 --> 00:19:27.460
+On the actual day, it's Thursday,
+
+
+00:19:27.460 --> 00:19:28.540
+it's six o'clock in the morning,
+
+
+00:19:28.540 --> 00:19:30.540
+and we don't know how these documents
+
+
+00:19:30.540 --> 00:19:31.360
+are going to be released.
+
+
+00:19:31.360 --> 00:19:33.580
+We've got a hunch, but nothing more.
+
+
+00:19:33.580 --> 00:19:34.600
+So there was good news and bad news.
+
+
+00:19:34.600 --> 00:19:36.340
+The good news is that the website
+
+
+00:19:36.340 --> 00:19:37.620
+that the government published these on
+
+
+00:19:37.620 --> 00:19:38.860
+was absolutely beautiful.
+
+
+00:19:38.860 --> 00:19:41.800
+And by beautiful, I mean it was really easy to scrape.
+
+
+00:19:41.800 --> 00:19:44.860
+Each MP, there's a big list of MPs,
+
+
+00:19:44.860 --> 00:19:46.820
+there's a link to the page about that MP,
+
+
+00:19:46.820 --> 00:19:49.000
+the page about that MP links to the PDFs.
+
+
+00:19:49.000 --> 00:19:51.820
+And so with just a few lines of beautiful soup
+
+
+00:19:51.820 --> 00:19:54.380
+to pull out all the MPs, and a few more lines of beautiful soup
+
+
+00:19:54.380 --> 00:19:55.580
+to pull out the list of PDFs.
+
+
+00:19:55.580 --> 00:19:59.020
+We had a list of 10,000 URLs of PDF files
+
+
+00:19:59.020 --> 00:20:01.740
+we needed to download.
+
+
+00:20:01.740 --> 00:20:04.540
+Bad news was that the documents they'd released
+
+
+00:20:04.540 --> 00:20:08.300
+weren't in exactly the format we expected.
+
+
+00:20:08.300 --> 00:20:10.580
+This is the thumbnails of one of the documents.
+
+
+00:20:10.580 --> 00:20:12.380
+And you'll notice that two of the files
+
+
+00:20:12.380 --> 00:20:15.100
+there are in the landscape rather than portrait.
+
+
+00:20:15.100 --> 00:20:19.780
+And also, I was expecting them all to be A4 portrait files.
+
+
+00:20:19.780 --> 00:20:20.980
+Some of them weren't A4.
+
+
+00:20:20.980 --> 00:20:22.660
+they were wonky sizes.
+
+
+00:20:22.660 --> 00:20:24.220
+To make things even worse, the PDF file,
+
+
+00:20:24.220 --> 00:20:25.520
+I suppose kind of fittingly,
+
+
+00:20:25.520 --> 00:20:27.620
+considering what the MPs have been up to,
+
+
+00:20:27.620 --> 00:20:29.780
+the PDF files were corrupt.
+
+
+00:20:29.780 --> 00:20:30.860
+(audience laughing)
+
+
+00:20:30.860 --> 00:20:35.020
+When you fire them through ImageMagick,
+
+
+00:20:35.020 --> 00:20:36.680
+ImageMagick shells out to GhostScript,
+
+
+00:20:36.680 --> 00:20:39.060
+and GhostScript just throws hundreds and hundreds
+
+
+00:20:39.060 --> 00:20:40.100
+of error messages saying,
+
+
+00:20:40.100 --> 00:20:41.860
+"Please contact the author of this PDF file
+
+
+00:20:41.860 --> 00:20:44.020
+"and tell them they're violating the specification,"
+
+
+00:20:44.020 --> 00:20:46.660
+which I don't know if that would have done any good.
+
+
+00:20:46.660 --> 00:20:49.780
+But it meant that the CPU was pegged at sort of 99%
+
+
+00:20:49.780 --> 00:20:51.460
+for five minutes for every single document
+
+
+00:20:51.460 --> 00:20:55.060
+we needed to convert, which clearly wasn't going to scale.
+
+
+00:20:55.060 --> 00:20:56.660
+So we've got this problem, these documents are out,
+
+
+00:20:56.660 --> 00:20:58.260
+we've downloaded all these PDFs,
+
+
+00:20:58.260 --> 00:21:02.180
+we have a site ready to run, which expects A4,
+
+
+00:21:02.180 --> 00:21:04.620
+and we don't have any A4 images.
+
+
+00:21:04.620 --> 00:21:06.220
+This is where the fact that I'm working for
+
+
+00:21:06.220 --> 00:21:09.580
+a big organization as opposed to just hacking
+
+
+00:21:09.580 --> 00:21:11.580
+in a bedroom comes into handy.
+
+
+00:21:11.580 --> 00:21:13.420
+The technology director sent an email saying,
+
+
+00:21:13.420 --> 00:21:15.340
+right, everyone drop everything today,
+
+
+00:21:15.340 --> 00:21:17.860
+our only priority is getting this thing out.
+
+
+00:21:17.860 --> 00:21:20.260
+This is the Drop Everything School of Project Management,
+
+
+00:21:20.260 --> 00:21:23.100
+which I guess is closely related to the cowboy
+
+
+00:21:23.100 --> 00:21:24.300
+development process.
+
+
+00:21:24.300 --> 00:21:26.940
+And so we set up two teams.
+
+
+00:21:26.940 --> 00:21:29.380
+We had a team working with Photoshop and AppleScript.
+
+
+00:21:29.380 --> 00:21:31.460
+If you work for a newspaper, Photoshop and AppleScript
+
+
+00:21:31.460 --> 00:21:33.640
+literally make the world go round.
+
+
+00:21:33.640 --> 00:21:35.820
+And another team working with Java and IntelliJ,
+
+
+00:21:35.820 --> 00:21:38.680
+'cause they're a very good PDF libraries for Java.
+
+
+00:21:38.680 --> 00:21:40.540
+And we set them sort of head to head at a race
+
+
+00:21:40.540 --> 00:21:42.260
+to see who could solve this problem first.
+
+
+00:21:42.260 --> 00:21:43.540
+They actually both solved the problem
+
+
+00:21:43.540 --> 00:21:44.420
+in about the same time.
+
+
+00:21:44.420 --> 00:21:47.180
+It took them sort of an hour and 15 minutes.
+
+
+00:21:47.180 --> 00:21:49.260
+And so we ended up using the Photoshop solution
+
+
+00:21:49.260 --> 00:21:51.860
+to get the first 50 MPs into the system,
+
+
+00:21:51.860 --> 00:21:53.980
+and sort of 50 most controversial ones.
+
+
+00:21:53.980 --> 00:21:55.740
+And then we ran the Java thing overnight
+
+
+00:21:55.740 --> 00:21:56.860
+on all of our workstations
+
+
+00:21:56.860 --> 00:21:59.140
+to crunch down the rest of the files.
+
+
+00:21:59.140 --> 00:22:00.660
+The plan was to put the images on S3.
+
+
+00:22:00.660 --> 00:22:03.980
+Turns out uploading however many gigabytes of images to S3
+
+
+00:22:03.980 --> 00:22:06.180
+takes bloody ages, so we asked Syncron
+
+
+00:22:06.180 --> 00:22:08.780
+to run our own static hosting instead,
+
+
+00:22:08.780 --> 00:22:10.060
+which worked much better.
+
+
+00:22:10.060 --> 00:22:11.860
+And then we had to do QA.
+
+
+00:22:11.860 --> 00:22:15.260
+The Guardian, I managed to get away
+
+
+00:22:15.260 --> 00:22:16.500
+with the cowboy development process,
+
+
+00:22:16.500 --> 00:22:18.260
+but the Guardian does not put things live
+
+
+00:22:18.260 --> 00:22:19.780
+in front of an audience of 30 million people
+
+
+00:22:19.780 --> 00:22:21.600
+without at least doing QA on them.
+
+
+00:22:21.600 --> 00:22:23.460
+So we had the entire QA team,
+
+
+00:22:23.460 --> 00:22:26.460
+we had four QA engineers clicking around the site
+
+
+00:22:26.460 --> 00:22:29.380
+as we were uploading sort of files into it,
+
+
+00:22:29.380 --> 00:22:31.780
+filing bugs which were being triaged
+
+
+00:22:31.780 --> 00:22:34.240
+by someone running between their desk and my desk,
+
+
+00:22:34.240 --> 00:22:36.660
+and I was fixing as fast as I possibly could.
+
+
+00:22:36.660 --> 00:22:38.820
+And we managed to get it live.
+
+
+00:22:38.820 --> 00:22:39.940
+The one thing we didn't have time for
+
+
+00:22:39.940 --> 00:22:42.980
+was what you call it, load testing.
+
+
+00:22:42.980 --> 00:22:44.700
+(audience laughing)
+
+
+00:22:44.700 --> 00:22:47.620
+The lead architect for the Guardian said,
+
+
+00:22:47.620 --> 00:22:50.340
+"You know what, we'll launch it, we'll load test it live."
+
+
+00:22:50.340 --> 00:22:53.940
+So we launched, we went live on EC2.
+
+
+00:22:53.940 --> 00:22:56.340
+I tweeted it, I said, "Just launched this."
+
+
+00:22:56.340 --> 00:22:58.660
+We had a whole bunch of Guardian accounts retweeted,
+
+
+00:22:58.660 --> 00:23:01.460
+and three minutes later, the site went down.
+
+
+00:23:01.460 --> 00:23:04.340
+'Cause it turns out, it's a bad idea
+
+
+00:23:04.340 --> 00:23:05.700
+to have more Apache children
+
+
+00:23:05.700 --> 00:23:07.560
+than it is MySQL max connections.
+
+
+00:23:07.560 --> 00:23:10.100
+I'm sure anyone in this room who's used those will know this
+
+
+00:23:10.100 --> 00:23:14.180
+and we knew that as well, but we were load testing it live,
+
+
+00:23:14.180 --> 00:23:15.720
+what could possibly go wrong.
+
+
+00:23:15.720 --> 00:23:18.080
+So we fixed that one, that was an easy fix.
+
+
+00:23:18.080 --> 00:23:20.760
+The next crash was entirely my fault.
+
+
+00:23:20.760 --> 00:23:22.900
+So we have this progress bar on the front page,
+
+
+00:23:22.900 --> 00:23:24.160
+and people have been, the progress bar
+
+
+00:23:24.160 --> 00:23:25.400
+had been edging up really fast
+
+
+00:23:25.400 --> 00:23:26.860
+as people went through all these files.
+
+
+00:23:26.860 --> 00:23:28.600
+So then we started pushing more files in,
+
+
+00:23:28.600 --> 00:23:30.760
+and I noticed that because we were adding files,
+
+
+00:23:30.760 --> 00:23:33.300
+the progress bar was actually going back down again.
+
+
+00:23:33.300 --> 00:23:35.360
+So on Twitter I said, hey, check this out.
+
+
+00:23:35.360 --> 00:23:37.040
+If you hit refresh on our homepage,
+
+
+00:23:37.040 --> 00:23:38.840
+the red bar goes down instead of up.
+
+
+00:23:38.840 --> 00:23:39.800
+(audience laughing)
+
+
+00:23:39.800 --> 00:23:40.880
+And then 30 seconds later,
+
+
+00:23:40.880 --> 00:23:42.840
+I go, please stop refreshing our homepage.
+
+
+00:23:42.840 --> 00:23:44.520
+(audience laughing)
+
+
+00:23:44.520 --> 00:23:46.100
+Our database hurts.
+
+
+00:23:46.100 --> 00:23:52.400
+We were now pegging the database at 135% of CPU.
+
+
+00:23:52.400 --> 00:23:56.020
+And it turns out, when we ran the MySQL show process list
+
+
+00:23:56.020 --> 00:23:57.480
+to see what the active queries were,
+
+
+00:23:57.480 --> 00:24:00.280
+it turns out the single most expensive query in the system
+
+
+00:24:00.280 --> 00:24:01.700
+was the one that was used to display
+
+
+00:24:01.700 --> 00:24:04.060
+the little progress bar on the homepage.
+
+
+00:24:04.060 --> 00:24:06.200
+That was me getting a bit trigger-happy with the ORM.
+
+
+00:24:06.200 --> 00:24:08.960
+I was doing this, I was saying,
+
+
+00:24:08.960 --> 00:24:12.060
+yeah, I can hear SQL nerds in the audience
+
+
+00:24:12.060 --> 00:24:13.660
+shuddering with horror.
+
+
+00:24:13.660 --> 00:24:15.660
+That innocent-looking little query there
+
+
+00:24:15.660 --> 00:24:17.660
+turns into this, which is account distinct
+
+
+00:24:17.660 --> 00:24:20.060
+on the left outer join against the single largest table
+
+
+00:24:20.060 --> 00:24:21.060
+in our database.
+
+
+00:24:21.060 --> 00:24:22.800
+(audience laughs)
+
+
+00:24:22.800 --> 00:24:25.620
+And so we figured that out, and we were like,
+
+
+00:24:25.620 --> 00:24:27.220
+ah, the site's falling over,
+
+
+00:24:27.220 --> 00:24:30.620
+so we added sort of three lines of caching code,
+
+
+00:24:30.620 --> 00:24:32.860
+which instantly dropped our database load
+
+
+00:24:32.860 --> 00:24:37.140
+from 135% of CPU to 35% of CPU.
+
+
+00:24:37.140 --> 00:24:37.980
+So that was good.
+
+
+00:24:37.980 --> 00:24:40.400
+Of course, with hindsight, if we change that
+
+
+00:24:40.400 --> 00:24:43.940
+from votes is null equals true to votes is null equals false,
+
+
+00:24:43.940 --> 00:24:45.680
+it would have meant that we weren't doing
+
+
+00:24:45.680 --> 00:24:47.740
+a let an outer thingamy join,
+
+
+00:24:47.740 --> 00:24:49.380
+and it would have been slightly nicer.
+
+
+00:24:49.380 --> 00:24:51.580
+The eventual solution, of course, was to denormalize.
+
+
+00:24:51.580 --> 00:24:53.540
+We switched the query over to have a
+
+
+00:24:53.540 --> 00:24:55.700
+isReviewed boolean flag on each page,
+
+
+00:24:55.700 --> 00:24:57.500
+and our database load went to zero
+
+
+00:24:57.500 --> 00:24:58.780
+and stayed there ever since.
+
+
+00:24:58.780 --> 00:25:02.480
+So I think the lesson there is don't be an idiot, really.
+
+
+00:25:02.480 --> 00:25:06.580
+We started off running on the same server.
+
+
+00:25:06.580 --> 00:25:10.020
+We started running with myISAM on the same server
+
+
+00:25:10.020 --> 00:25:13.180
+was the web application, which we knew was a bad idea,
+
+
+00:25:13.180 --> 00:25:16.280
+and guess what, it was a really bad idea.
+
+
+00:25:16.280 --> 00:25:20.020
+So at one point we had to migrate from MyISAM on one server
+
+
+00:25:20.020 --> 00:25:21.840
+to InnoDB on a separate server.
+
+
+00:25:21.840 --> 00:25:23.420
+Thankfully you can do this with a sed script.
+
+
+00:25:23.420 --> 00:25:25.780
+If you run MySQL dump on one server,
+
+
+00:25:25.780 --> 00:25:28.980
+pipe it through sed, replace ngin equals MyISAM
+
+
+00:25:28.980 --> 00:25:31.260
+with ngin equals InnoDB,
+
+
+00:25:31.260 --> 00:25:33.540
+and we did Latin1 to UTF-8 at the same time just to be sure,
+
+
+00:25:33.540 --> 00:25:37.260
+and pipe it to the other server, that works.
+
+
+00:25:37.260 --> 00:25:40.840
+This is cowboy shell scripting right there.
+
+
+00:25:40.840 --> 00:25:44.220
+So, (laughs)
+
+
+00:25:44.220 --> 00:25:46.980
+so that's kind of the story of the MPs Expenses app.
+
+
+00:25:46.980 --> 00:25:49.200
+We had a post-mortem afterwards, and we said,
+
+
+00:25:49.200 --> 00:25:52.080
+"Okay, that was cool, we got lots of good press out of it,
+
+
+00:25:52.080 --> 00:25:55.400
+"we got the thing launched, let's never do that again."
+
+
+00:25:55.400 --> 00:25:57.680
+And we started, and we basically had to try,
+
+
+00:25:57.680 --> 00:26:00.640
+because, I mean, there are a whole bunch of downsides
+
+
+00:26:00.640 --> 00:26:01.600
+to cowboy development.
+
+
+00:26:01.600 --> 00:26:03.680
+One of them is, I was the only person in the organization
+
+
+00:26:03.680 --> 00:26:05.000
+that knew how the thing worked,
+
+
+00:26:05.000 --> 00:26:06.800
+so there was a bus factor of one,
+
+
+00:26:06.800 --> 00:26:08.140
+which is never good.
+
+
+00:26:08.140 --> 00:26:10.340
+We had no deployment process.
+
+
+00:26:10.340 --> 00:26:13.360
+We did have backup scripts, we were good about that at least.
+
+
+00:26:13.360 --> 00:26:16.780
+But we really, when you're an organization like the Guardian
+
+
+00:26:16.780 --> 00:26:19.280
+you shouldn't really be deploying week-long
+
+
+00:26:19.280 --> 00:26:22.380
+hacked together bits of crap on a EC2 instance
+
+
+00:26:22.380 --> 00:26:24.700
+and just crossing your fingers and hoping they'll stay up.
+
+
+00:26:24.700 --> 00:26:26.760
+So the last thing I wanted to talk about today
+
+
+00:26:26.760 --> 00:26:28.400
+was reining in the cowboy.
+
+
+00:26:28.400 --> 00:26:32.060
+What we're doing to try and make Django developments
+
+
+00:26:32.060 --> 00:26:36.140
+inside the Guardian a bit less fly by your teeth.
+
+
+00:26:36.140 --> 00:26:39.300
+And so the first step was to find a project
+
+
+00:26:39.300 --> 00:26:42.100
+that we could do that didn't have to be done in a week
+
+
+00:26:42.100 --> 00:26:44.300
+and we could actually plan for
+
+
+00:26:44.300 --> 00:26:46.340
+and assign development resources to
+
+
+00:26:46.340 --> 00:26:47.780
+and all of those sort of crazy things
+
+
+00:26:47.780 --> 00:26:50.220
+that large organizations like to do.
+
+
+00:26:50.220 --> 00:26:53.940
+So I can't talk about the eventual application for this yet
+
+
+00:26:53.940 --> 00:26:55.700
+but the component we're building with Django
+
+
+00:26:55.700 --> 00:26:59.220
+is a very straightforward RSS to JSON proxy service.
+
+
+00:26:59.220 --> 00:27:04.220
+It's nice because it's a sort of fixed size of project.
+
+
+00:27:04.220 --> 00:27:07.700
+We can use this as an excuse to get our deployment script
+
+
+00:27:07.700 --> 00:27:09.680
+sorted out to figure out how we host things,
+
+
+00:27:09.680 --> 00:27:12.820
+where we host things, build the correct Amazon EC2 images,
+
+
+00:27:12.820 --> 00:27:14.020
+all of that sort of stuff.
+
+
+00:27:14.020 --> 00:27:15.380
+And we're doing this with pair programming,
+
+
+00:27:15.380 --> 00:27:16.940
+which means that the,
+
+
+00:27:16.940 --> 00:27:18.820
+a pair programming with Java developers,
+
+
+00:27:18.820 --> 00:27:22.020
+which means that they're learning how Django and stuff works.
+
+
+00:27:22.020 --> 00:27:23.980
+We have unit tests, we use mocks,
+
+
+00:27:23.980 --> 00:27:26.740
+we use continuous integration against Team City,
+
+
+00:27:26.740 --> 00:27:29.660
+which means that our deployment script can actually,
+
+
+00:27:29.660 --> 00:27:32.100
+the deployment scripts are written to take a build number
+
+
+00:27:32.100 --> 00:27:33.660
+from the continuous integration service.
+
+
+00:27:33.660 --> 00:27:37.220
+you can't deploy it unless the tests pass.
+
+
+00:27:37.220 --> 00:27:39.340
+All of which, actually, setting all of that stuff up
+
+
+00:27:39.340 --> 00:27:41.860
+took maybe a day or two, and we're gonna have it forever,
+
+
+00:27:41.860 --> 00:27:45.580
+so that was a very worthwhile investment.
+
+
+00:27:45.580 --> 00:27:47.500
+But the thing that's interesting about doing this
+
+
+00:27:47.500 --> 00:27:50.980
+is I'm teaching Java developers Django,
+
+
+00:27:50.980 --> 00:27:53.140
+and it means that I'm abundantly aware of points
+
+
+00:27:53.140 --> 00:27:55.420
+where Django makes me feel a bit embarrassed.
+
+
+00:27:55.420 --> 00:27:58.380
+Like, these guys come from a very different
+
+
+00:27:58.380 --> 00:28:00.000
+sphere of development, and there are questions
+
+
+00:28:00.000 --> 00:28:01.080
+that they ask, and most of the time,
+
+
+00:28:01.080 --> 00:28:02.700
+we've got a good answer, but some of the time,
+
+
+00:28:02.700 --> 00:28:05.040
+it's a little bit embarrassing.
+
+
+00:28:05.040 --> 00:28:07.500
+So, I've got these in the wrong order actually.
+
+
+00:28:07.500 --> 00:28:10.380
+The single most embarrassing thing about Django
+
+
+00:28:10.380 --> 00:28:11.420
+is when the sysadmin goes,
+
+
+00:28:11.420 --> 00:28:13.420
+"So, how do exceptions get logged?"
+
+
+00:28:13.420 --> 00:28:16.180
+And you say, "Oh, that's easy, they get emailed to you."
+
+
+00:28:16.180 --> 00:28:18.460
+And yeah, it turns out most sysadmins
+
+
+00:28:18.460 --> 00:28:20.960
+don't take too kindly to that.
+
+
+00:28:20.960 --> 00:28:24.660
+But to be honest, it was mostly smooth sailing.
+
+
+00:28:24.660 --> 00:28:26.340
+It was slightly embarrassing that we had to configure
+
+
+00:28:26.340 --> 00:28:29.180
+the database in order to get the test suite to run.
+
+
+00:28:29.180 --> 00:28:31.260
+The lack of built-in logging stuff
+
+
+00:28:31.260 --> 00:28:32.380
+meant that we had to do a bit of work
+
+
+00:28:32.380 --> 00:28:34.340
+with the Django logging module.
+
+
+00:28:34.340 --> 00:28:36.460
+Amazingly, one of the biggest complaints I had
+
+
+00:28:36.460 --> 00:28:39.300
+was that with Django, when you deploy a Django application,
+
+
+00:28:39.300 --> 00:28:41.980
+your tests get deployed alongside the code
+
+
+00:28:41.980 --> 00:28:43.560
+because your tests are built into
+
+
+00:28:43.560 --> 00:28:44.900
+the different application directories,
+
+
+00:28:44.900 --> 00:28:46.060
+which I'd never considered before,
+
+
+00:28:46.060 --> 00:28:47.620
+but I think in the Java world,
+
+
+00:28:47.620 --> 00:28:50.740
+where you're deploying a compiled asset,
+
+
+00:28:50.740 --> 00:28:52.500
+obviously you don't want to compile your tests
+
+
+00:28:52.500 --> 00:28:54.300
+and ship them with your production stuff.
+
+
+00:28:54.300 --> 00:28:57.340
+So in the end, our deployment script that builds a tarball
+
+
+00:28:57.340 --> 00:28:59.260
+just excludes anything in the test directories
+
+
+00:28:59.260 --> 00:29:00.260
+and that works fine.
+
+
+00:29:01.620 --> 00:29:03.180
+Now, I have got a final thought,
+
+
+00:29:03.180 --> 00:29:05.340
+which is almost entirely unrelated
+
+
+00:29:05.340 --> 00:29:08.540
+to cowboy development or any of this stuff,
+
+
+00:29:08.540 --> 00:29:11.780
+but I figured since this slot's now
+
+
+00:29:11.780 --> 00:29:13.100
+in front of the technical design panel,
+
+
+00:29:13.100 --> 00:29:15.820
+I can get a head start on everyone else.
+
+
+00:29:15.820 --> 00:29:17.100
+And that's this.
+
+
+00:29:17.100 --> 00:29:19.360
+When Django was released in 2005,
+
+
+00:29:19.360 --> 00:29:23.060
+and in 2005, web development looked more or less like this.
+
+
+00:29:23.060 --> 00:29:24.740
+You have a relational database,
+
+
+00:29:24.740 --> 00:29:26.380
+your application, your templates,
+
+
+00:29:26.380 --> 00:29:27.900
+and then maybe you've got a bit of caching
+
+
+00:29:27.900 --> 00:29:30.780
+and some backend admin tools and XML feed stuff.
+
+
+00:29:30.780 --> 00:29:35.220
+And that's the internet fluffy cloud there underneath.
+
+
+00:29:35.220 --> 00:29:36.900
+I tried to draw a sheep in OmniGraffle,
+
+
+00:29:36.900 --> 00:29:38.420
+but it wasn't really working.
+
+
+00:29:38.420 --> 00:29:40.660
+So I've done that instead.
+
+
+00:29:40.660 --> 00:29:42.460
+So this was 2005 when Django came out,
+
+
+00:29:42.460 --> 00:29:44.100
+and that worked great.
+
+
+00:29:44.100 --> 00:29:47.300
+Thing is, web development in 2009 looks pretty different.
+
+
+00:29:47.300 --> 00:29:48.900
+You've still got those core things,
+
+
+00:29:48.900 --> 00:29:51.300
+but you've also got external search indexes.
+
+
+00:29:51.300 --> 00:29:53.680
+You have external web services.
+
+
+00:29:53.680 --> 00:29:56.160
+I think every website I've built in the past year
+
+
+00:29:56.160 --> 00:29:59.860
+has at some point made an HTTP call to something else.
+
+
+00:29:59.860 --> 00:30:01.460
+You have these non-relational databases,
+
+
+00:30:01.460 --> 00:30:03.380
+key value stores and so on, message queues,
+
+
+00:30:03.380 --> 00:30:06.500
+offline workers, you're expected to provide an API.
+
+
+00:30:06.500 --> 00:30:08.200
+These days you're expected to provide webhooks,
+
+
+00:30:08.200 --> 00:30:09.500
+which are very exciting.
+
+
+00:30:09.500 --> 00:30:10.820
+I mean, monitoring reporting.
+
+
+00:30:10.820 --> 00:30:13.260
+I've got data structure servers on there as well.
+
+
+00:30:13.260 --> 00:30:17.040
+There's a wonderful little piece of software called Redis,
+
+
+00:30:17.040 --> 00:30:19.300
+which is kind of like Memcached,
+
+
+00:30:19.300 --> 00:30:22.160
+only it persists to disk every 15 seconds,
+
+
+00:30:22.160 --> 00:30:25.100
+which slightly terrifies me, but there you go.
+
+
+00:30:25.100 --> 00:30:27.260
+And it can do set and list operations.
+
+
+00:30:27.260 --> 00:30:29.820
+So you can say, atomically add this to a set,
+
+
+00:30:29.820 --> 00:30:32.680
+and remove this from the set, that kind of thing.
+
+
+00:30:32.680 --> 00:30:35.700
+Which means there's a whole load of things
+
+
+00:30:35.700 --> 00:30:37.880
+which don't work so well against a relational database,
+
+
+00:30:37.880 --> 00:30:40.020
+but that do work well against some kind of
+
+
+00:30:40.020 --> 00:30:43.440
+in memory data structure running on the server somewhere.
+
+
+00:30:43.440 --> 00:30:46.240
+And so really my interest in Django these days is
+
+
+00:30:46.240 --> 00:30:48.740
+what can we do to make this kind of stack,
+
+
+00:30:48.740 --> 00:30:51.280
+make this kind of thing more obvious
+
+
+00:30:51.280 --> 00:30:53.080
+with the default Django install.
+
+
+00:30:53.080 --> 00:30:55.040
+The Django community as a whole is fantastic.
+
+
+00:30:55.040 --> 00:30:58.620
+We have projects that cover almost everything on this,
+
+
+00:30:59.560 --> 00:31:02.800
+that's interesting, we have projects covering almost everything on this diagram
+
+
+00:31:02.800 --> 00:31:06.560
+but I think really the purpose of a web framework is to
+
+
+00:31:06.560 --> 00:31:10.200
+solve the common problems and the set of common problems
+
+
+00:31:10.200 --> 00:31:13.600
+has expanded quite dramatically in the past few years
+
+
+00:31:13.600 --> 00:31:20.600
+so thank you very much for listening
+
+
+00:31:20.600 --> 00:31:26.960
+so have I got time for questions? I think I have
+
+
+00:31:26.960 --> 00:31:31.120
+Yeah, I can take a few questions on any of that stuff.
+
+
+00:31:31.120 --> 00:31:38.720
+- What a, sorry, could you grab the mic and get out?
+
+
+00:31:38.720 --> 00:31:45.180
+What design process do you use
+
+
+00:31:45.180 --> 00:31:47.140
+when you're starting a project?
+
+
+00:31:47.140 --> 00:31:49.360
+Do you start with database models and ER?
+
+
+00:31:49.360 --> 00:31:50.680
+- Do you mean which projects,
+
+
+00:31:50.680 --> 00:31:52.760
+the Fault project or the MPs project?
+
+
+00:31:52.760 --> 00:31:56.320
+The Fault project, the answer will be much more interesting.
+
+
+00:31:56.320 --> 00:31:59.120
+- Well, a non-cowboy project, a more official process.
+
+
+00:31:59.120 --> 00:32:01.300
+- Oh, a non-cowboy project.
+
+
+00:32:01.300 --> 00:32:05.120
+Tell you what, since I'm mostly a cowboy developer,
+
+
+00:32:05.120 --> 00:32:06.420
+what I'll do is I will answer that
+
+
+00:32:06.420 --> 00:32:07.620
+with respect to the fort project,
+
+
+00:32:07.620 --> 00:32:09.920
+because one thing I didn't have time to include in here
+
+
+00:32:09.920 --> 00:32:11.880
+is we've actually done two of these forts.
+
+
+00:32:11.880 --> 00:32:14.360
+We did the one in Alderney,
+
+
+00:32:14.360 --> 00:32:15.720
+where we built Wildlife Near You.
+
+
+00:32:15.720 --> 00:32:19.500
+Also, a few months ago, we did a fort project in Scotland,
+
+
+00:32:19.500 --> 00:32:22.000
+in a sort of bijou holiday fort,
+
+
+00:32:22.000 --> 00:32:24.300
+a holiday castle, which is very nice,
+
+
+00:32:24.300 --> 00:32:26.480
+where we built a new application,
+
+
+00:32:26.480 --> 00:32:27.520
+which again, we haven't launched,
+
+
+00:32:27.520 --> 00:32:30.220
+but we're not 10 months on yet, so there's hope.
+
+
+00:32:30.220 --> 00:32:33.480
+But when we did that, we tried to take into account
+
+
+00:32:33.480 --> 00:32:35.140
+all the lessons we'd learned last time.
+
+
+00:32:35.140 --> 00:32:37.240
+The biggest problem we had with the first thought project
+
+
+00:32:37.240 --> 00:32:39.000
+is you're trying to build a site in a week,
+
+
+00:32:39.000 --> 00:32:41.360
+so evidently all the developers hair off on day one
+
+
+00:32:41.360 --> 00:32:42.620
+and start building things,
+
+
+00:32:42.620 --> 00:32:45.780
+while the people who are doing design and IA
+
+
+00:32:45.780 --> 00:32:46.620
+are still trying to figure out
+
+
+00:32:46.620 --> 00:32:48.080
+what the site was actually going to do.
+
+
+00:32:48.080 --> 00:32:49.360
+It meant that on day three,
+
+
+00:32:49.360 --> 00:32:51.240
+you finally got the wireframes and stuff,
+
+
+00:32:51.240 --> 00:32:52.800
+and they don't really fit what's being built,
+
+
+00:32:52.800 --> 00:32:55.880
+you have a lot of duplicate work and a lot of stuff gets thrown away.
+
+
+00:32:55.880 --> 00:33:01.380
+So for the second thought, we prioritized designing the application first, so making
+
+
+00:33:01.380 --> 00:33:05.440
+sure at the very least we had consensus on what we were going to build and more or less
+
+
+00:33:05.440 --> 00:33:07.760
+what it was going to do, and some kind of priority list.
+
+
+00:33:07.760 --> 00:33:11.960
+It meant that for the first whole two days we didn't write any code, which for a cowboy
+
+
+00:33:11.960 --> 00:33:15.640
+developer like myself was incredibly frustrating, but at the same time it meant that the remaining
+
+
+00:33:15.640 --> 00:33:18.200
+five days when we were building stuff, we were actually building stuff we were going
+
+
+00:33:18.200 --> 00:33:19.200
+to use.
+
+
+00:33:19.200 --> 00:33:24.200
+My fiance has a wonderful presentation about the design process that we used at the Fort,
+
+
+00:33:24.200 --> 00:33:28.200
+which I think she's written up somewhere, but essentially we used a thing called the KJ method,
+
+
+00:33:28.200 --> 00:33:34.200
+which is a fantastic sort of group exercise for achieving consensus on what the thing is you're going to build.
+
+
+00:33:34.200 --> 00:33:37.200
+And we did a lot of splitting up into wireframes.
+
+
+00:33:37.200 --> 00:33:43.200
+We made sure that our database models were being designed by one team, and we had a URL master and so forth.
+
+
+00:33:43.200 --> 00:33:46.460
+I might try and do a lightning talk on that
+
+
+00:33:46.460 --> 00:33:49.400
+during lightning talk tomorrow, if that sounds interesting.
+
+
+00:33:49.400 --> 00:33:53.720
+But anyway, yeah, it turns out achieving consensus
+
+
+00:33:53.720 --> 00:33:55.340
+on what you're going to build when you're building something
+
+
+00:33:55.340 --> 00:33:58.340
+with 12 people in seven days is actually a really good idea.
+
+
+00:33:58.340 --> 00:34:02.420
+- This falls up with that question.
+
+
+00:34:02.420 --> 00:34:03.900
+After you've achieved consensus
+
+
+00:34:03.900 --> 00:34:05.420
+and when you're developing really fast,
+
+
+00:34:05.420 --> 00:34:06.660
+how do you stay coordinated?
+
+
+00:34:06.660 --> 00:34:08.220
+How do you stay consistent with each other?
+
+
+00:34:08.220 --> 00:34:10.260
+And how do you keep up to date with that?
+
+
+00:34:11.500 --> 00:34:13.800
+The primary answer is we don't really.
+
+
+00:34:13.800 --> 00:34:15.740
+One of the reasons World Life NAU took a lot of time
+
+
+00:34:15.740 --> 00:34:17.260
+to beat into shape after we got off the fort
+
+
+00:34:17.260 --> 00:34:19.380
+is that it was lots of different development styles.
+
+
+00:34:19.380 --> 00:34:21.500
+For the second fort, we basically,
+
+
+00:34:21.500 --> 00:34:24.100
+the main way we did that was with pair programming.
+
+
+00:34:24.100 --> 00:34:25.620
+We made sure that we were,
+
+
+00:34:25.620 --> 00:34:27.420
+almost everything we were doing was paired up,
+
+
+00:34:27.420 --> 00:34:28.660
+and we swapped the pairs around a lot,
+
+
+00:34:28.660 --> 00:34:31.620
+and it meant that the sort of house development style
+
+
+00:34:31.620 --> 00:34:33.780
+sort of spread organically, and by the last day,
+
+
+00:34:33.780 --> 00:34:36.900
+everyone was writing code in more or less the same way.
+
+
+00:34:36.900 --> 00:34:38.020
+I think really what that,
+
+
+00:34:38.020 --> 00:34:40.740
+and we also reestablished PEP-8 standards
+
+
+00:34:40.740 --> 00:34:42.380
+on the first day and that kind of thing.
+
+
+00:34:42.380 --> 00:34:44.580
+What that really comes down to though is,
+
+
+00:34:44.580 --> 00:34:47.780
+I think it's unrealistic to expect a team of people
+
+
+00:34:47.780 --> 00:34:50.060
+who've never worked together to jump straight in
+
+
+00:34:50.060 --> 00:34:51.540
+using the same coding standards.
+
+
+00:34:51.540 --> 00:34:55.380
+We've found that pair programming spreads coding standards
+
+
+00:34:55.380 --> 00:34:57.300
+and sort of best practices far faster
+
+
+00:34:57.300 --> 00:34:59.300
+than any other method we could think of.
+
+
+00:34:59.300 --> 00:35:01.260
+- In terms of like tasks though,
+
+
+00:35:01.260 --> 00:35:03.500
+and keeping coordinated and getting work done
+
+
+00:35:03.500 --> 00:35:05.460
+and giving up work to different people,
+
+
+00:35:05.460 --> 00:35:07.900
+I mean, did you have any trouble with that?
+
+
+00:35:07.900 --> 00:35:10.720
+- So coordinating tasks.
+
+
+00:35:10.720 --> 00:35:13.320
+It helps if you're all in the same fort.
+
+
+00:35:13.320 --> 00:35:18.160
+So we had a thing on the wall with all of our tasks,
+
+
+00:35:18.160 --> 00:35:20.080
+and we had people's names on Post-it notes,
+
+
+00:35:20.080 --> 00:35:21.920
+and you stuck the Post-it note with your name on
+
+
+00:35:21.920 --> 00:35:23.920
+next to the task you were working on at the moment.
+
+
+00:35:23.920 --> 00:35:25.560
+And that worked pretty well.
+
+
+00:35:25.560 --> 00:35:29.760
+We also, I don't know if I can pull this up fast enough,
+
+
+00:35:29.760 --> 00:35:33.320
+we also built a piece of software for managing this
+
+
+00:35:33.320 --> 00:35:34.240
+called Bugle.
+
+
+00:35:34.240 --> 00:35:38.360
+So on the second fort, the first thing we realized
+
+
+00:35:38.360 --> 00:35:40.560
+when we got there is this was a much larger castle,
+
+
+00:35:40.560 --> 00:35:43.920
+we were going to be working in different rooms, obviously we needed Twitter, and we didn't
+
+
+00:35:43.920 --> 00:35:50.920
+have a net connection. So we did a sort of two-hour hacked Twitter clone, which we called
+
+
+00:35:50.920 --> 00:36:03.280
+Bugle, because you're on a fort and you've got a bugle. And one of the features of that
+
+
+00:36:03.280 --> 00:36:13.280
+[BLANK_AUDIO]
+
+
+00:36:13.280 --> 00:36:23.280
+[BLANK_AUDIO]
+
+
+00:36:23.280 --> 00:36:33.280
+[BLANK_AUDIO]
+
+
+00:36:33.280 --> 00:36:43.280
+[BLANK_AUDIO]
+
+
+00:36:43.280 --> 00:36:53.280
+[BLANK_AUDIO]
+
+
+00:36:53.280 --> 00:37:03.280
+[BLANK_AUDIO]
+
+
+00:37:03.280 --> 00:37:13.280
+[BLANK_AUDIO]
+
+
+00:37:13.280 --> 00:37:23.280
+[BLANK_AUDIO]
+
+
+00:37:23.280 --> 00:37:33.280
+[BLANK_AUDIO]
+
+
+00:37:33.280 --> 00:37:43.280
+[BLANK_AUDIO]
+
+
+00:37:43.280 --> 00:37:53.280
+[BLANK_AUDIO]
+
+
+00:37:53.280 --> 00:38:03.280
+[BLANK_AUDIO]
+
+
+00:38:03.280 --> 00:38:13.280
+[BLANK_AUDIO]
+
+
+00:38:13.280 --> 00:38:23.280
+[BLANK_AUDIO]
+
+
+00:38:23.280 --> 00:38:33.280
+[BLANK_AUDIO]
+
+
+00:38:33.280 --> 00:38:43.280
+[BLANK_AUDIO]
+
+
+00:38:43.280 --> 00:38:53.280
+[BLANK_AUDIO]
+
+
+00:38:53.280 --> 00:39:03.280
+[BLANK_AUDIO]
+
+
+00:39:03.280 --> 00:39:13.280
+[BLANK_AUDIO]
+
+
+00:39:13.280 --> 00:39:23.280
+[BLANK_AUDIO]
+
+
+00:39:23.280 --> 00:39:33.280
+[BLANK_AUDIO]
+
+
+00:39:33.280 --> 00:39:43.280
+[BLANK_AUDIO]
+
+
+00:39:43.280 --> 00:39:53.280
+[BLANK_AUDIO]
+
+
+00:39:53.280 --> 00:40:03.280
+[BLANK_AUDIO]
+
+
+00:40:03.280 --> 00:40:13.280
+[BLANK_AUDIO]
+
+
+00:40:13.280 --> 00:40:23.280
+[BLANK_AUDIO]
+
+
+00:40:23.280 --> 00:40:33.280
+[BLANK_AUDIO]
+
+
+00:40:33.280 --> 00:40:43.280
+[BLANK_AUDIO]
+
+
+00:40:43.280 --> 00:40:53.280
+[BLANK_AUDIO]
+
+
+00:40:53.280 --> 00:41:03.280
+[BLANK_AUDIO]
+
+
+00:41:03.280 --> 00:41:13.280
+[BLANK_AUDIO]
+
+
+00:41:13.280 --> 00:41:23.280
+[BLANK_AUDIO]
+
+
+00:41:23.280 --> 00:41:33.280
+[BLANK_AUDIO]
+
+
+00:41:33.280 --> 00:41:43.280
+[BLANK_AUDIO]
