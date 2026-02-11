@@ -2,6 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Vue 2 Audio Player GitHub</title>
 	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 	<style>
@@ -20,7 +21,23 @@
 		.playlist-item { padding:8px; cursor:pointer; border-radius:4px }
 		.playlist-item:hover { background:#f0f0f0 }
 		.playlist-item.active { font-weight:bold; background:#eaeaea }
-		@media (max-width:768px) { .player-container { flex-direction:column } .playlist { width:100%; border-left:none; border-top:1px solid #ddd; padding-top:10px } }
+		@media (max-width:768px) { 
+			.player-container { flex-direction:column } 
+			.playlist { width:100%; border-left:none; border-top:1px solid #ddd; padding-top:10px; padding-left:0 }
+			body { padding:10px }
+			.audio-player { padding:15px }
+			button { padding:6px 10px; font-size:12px }
+			.transcript { max-height:200px; font-size:13px }
+		}
+		@media (max-width:480px) {
+			body { padding:5px }
+			.audio-player { padding:10px }
+			.controls { gap:5px }
+			button { padding:5px 8px; font-size:11px }
+			.status { font-size:12px }
+			.transcript { max-height:150px; font-size:12px; padding:8px }
+			.playlist-item { padding:6px; font-size:12px }
+		}
 	</style>
 </head>
 <body>
@@ -30,9 +47,9 @@
 		<div class="player-container">
 			<div class="main">
 				<audio ref="audio" :src="currentAudioUrl" controls crossorigin="anonymous"
-							 @timeupdate="updateTime"
-							 @loadedmetadata="onLoaded"
-							 @error="onError">
+					 @timeupdate="updateTime"
+					 @loadedmetadata="onLoaded"
+					 @error="onError">
 					<track kind="subtitles" srclang="fr" label="FR" :src="currentVttUrl" default>
 				</audio>
 
@@ -56,13 +73,13 @@
 			</div>
 
 			<div v-if="isPlaylistMode" class="playlist">
-				<div v-for="(item,index) in playlist" :key="index" :class="['playlist-item',{ active: index === currentIndex }]" @click="selectTrack(index)">
+				<div v-for="(item,index) in playlist" :key="index" :class="['playlist-item',{ active: index === currentIndex }]}" @click="selectTrack(index)">
 					{{ item.title }}
 				</div>
 			</div>
+			</div>
 		</div>
 	</div>
-</div>
 
 <script>
 new Vue({
