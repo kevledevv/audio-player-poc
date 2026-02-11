@@ -91,7 +91,12 @@ new Vue({
 		currentVttUrl() { return this.isPlaylistMode ? this.playlist[this.currentIndex].vtt : this.vttUrl }
 	},
 	watch: {
-		currentAudioUrl() { this.resetPlayer() }
+		currentAudioUrl() { this.resetPlayer() },
+		currentVttUrl() {
+			this.$nextTick(() => {
+				this.loadCues()
+			})
+		}
 	},
 	mounted() {
 		this.loadCues()
